@@ -16,3 +16,48 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+# Back that shit up
+
+base_dir = node['backup']['base_dir']
+
+models_dir = File.join(base_path, "models")
+key_dir = File.join(base_dir, "keys")
+
+directory base_dir
+directory models_dir
+directory keys_dir
+
+gem_packge "bundler"
+execute "backup: bundle install" do
+  command "bundle install --deployment --binstubs"
+  cwd base_dir
+  action :nothing
+end
+
+cookbook_file File.join(base_dir, "Gemfile") do
+  notifies :run, resources(:execute => "backup: bundle install"), :immediately
+end
+
+template File.join(base_dir, "config.rb") do
+  variables( :databases => node['backup']['databases'],
+             :aws_access_key_id => node['backup']['aws']['access_key_id'],
+             :aws_secret_accesss_key => node['backup']['aws']['secret_access_key'],
+             :s3_bucket => node['backup']['aws']['s3']['bucket'],
+             :s3_path => node['backup']['aws']['s3']['path'],
+             :s3_keep => node['backup']['aws']['s3']['keep']
+             )
+end
+
+node['backup']['models'].each do |backup_model|
+
+  template File.join(models_dir, "#{backup_model}.rb") do
+    variables :databases => node['backup']['databases']
+  end
+
+  cron "daily backup" do
+    command "backup perform -t daily"
+    path "/opt/backups/bin"
+  end
+
+end

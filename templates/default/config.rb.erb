@@ -1,0 +1,42 @@
+Backup::Storage::S3.defaults do |s3|
+  s3.access_key_id = <%= @aws_access_key_id %>
+  s3.secret_access_key = <%= @aws_secret_access_key %>
+  s3.bucket = <%= @s3_bucket %>
+  s3.path = <%= @s3_path %>
+  s3.keep = <%= @s3_keep %>
+end
+
+Backup::Encryptor::GPG.defaults do |encryption|
+  encryption.key = open(File.join("keys", "backups.public.gpg")).read
+end
+
+Backup::Database::MySQL.defaults do |db|
+  db.name = :all
+  db.username = "root"
+  db.password = ""
+  db.socket = "/var/run/mysqld/mysqld.sock"
+  db.additional_options = ["--quick", "--single-transaction"]
+end
+
+Backup::Database::MongoDB.defaults  do |db|
+  db.name = :all
+  db.username = ""
+  db.password = ""
+  db.host = "localhost"
+  db.port = 27017
+  db.ipv6 = false
+  db.lock = false
+end
+
+Backup::Database::Redis.defaults do |db|
+  db.name = "dump"
+  db.path = "/var/lib/redis"
+  db.password = ""
+  db.host = "localhost"
+  db.port = 6379
+  db.invoke_save = true
+end
+
+Dir[File.join(File.dirname(Config.config_file), "models", "*.rb")].each do |model|
+  instance_eval(File.read(model))
+end
