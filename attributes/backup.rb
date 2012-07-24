@@ -4,6 +4,9 @@ default['backup']['base_dir'] = "/opt/backups"
 # Backup Models
 default['backup']['models'] = %w[daily]
 
+# Chunks (used by all models)
+default['backup']['split_into_chunks_of'] = 250
+
 # Databases
 default['backup']['databases'] = %w[MySQL MongoDB Redis]
 

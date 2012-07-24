@@ -52,7 +52,10 @@ end
 node['backup']['models'].each do |backup_model|
 
   template File.join(models_dir, "#{backup_model}.rb") do
-    variables :databases => node['backup']['databases']
+    variables( :backup_model => backup_model.to_sym,
+               :databases => node['backup']['databases'],
+               :split_into_chunks_of => node['backup']['split_into_chunks_of']
+               )
   end
 
   cron "daily backup" do
