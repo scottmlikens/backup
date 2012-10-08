@@ -28,7 +28,7 @@ directory base_dir
 directory models_dir
 directory keys_dir
 
-gem_packge "bundler"
+gem_package "bundler"
 execute "backup: bundle install" do
   command "bundle install --deployment --binstubs"
   cwd base_dir
