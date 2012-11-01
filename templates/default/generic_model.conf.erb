@@ -1,0 +1,52 @@
+# encoding: utf-8
+
+##
+# Backup Generated: <%= @name %>
+# Once configured, you can run the backup with the following command:
+# 
+# $ backup perform -t <%= @name %> [-c <path_to_configuration_file>]
+#
+Backup::Model.new(:<%= @name %>, '<%= @description %>') do
+
+##
+# Split [Splitter]
+#
+# Split the backup file in to chunks of <%= @split_into_chunks_of %> megabytes
+# if the backup file size exceeds <%= @split_into_chunks_of %> megabytes
+#
+split_into_chunks_of <%= @split_into_chunks_of %>
+
+<% if @store_with %>
+  store_with <%= @store_with["engine"] %> do |<%= @store_with["engine"].downcase %>|
+  <% @store_with["settings"].each_pair do |k,v| %>
+    <%= k %> = "<%= v %>"
+    <% end %>
+  end
+<% end %>
+  ##
+  # Gzip [Compressor]
+  #
+  compress_with Gzip
+  <% if @backup_type == "database" %>
+  database <%= @database_type %> do |db|
+  <% @options.each_pair do |k,v| %>
+    <%= k %> = <%= v %>
+    <% end %>
+  end
+  <% end %>
+  <% if @backup_type == "archive" %>
+  archive :<%= @name %> do |archive|
+  <% @options["add"].each do |v| %>
+    archive.add '<%= v %>'
+  <% end %>
+  <% if @options["exclude"] %>
+    <% @options["exclude"].each do |v| %>
+    archive.exclude '<%= v %>'
+    <% end %>
+  <% end %>
+    <% if @options["tar_options"] %>
+    archive.tar_options '<%= @options["tar_options"] %>'
+    <% end %>
+  end
+<% end %>
+end

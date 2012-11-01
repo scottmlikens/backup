@@ -1,5 +1,0 @@
-source "https://rubygems.org"
-
-git "git://github.com/meskyanichi/backup.git", :branch => "develop"
-gem "fog", "~> 1.4.0"
-

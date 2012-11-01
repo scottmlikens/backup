@@ -1,47 +1,26 @@
-Backup::Storage::S3.defaults do |s3|
-  s3.access_key_id = <%= @aws_access_key_id %>
-  s3.secret_access_key = <%= @aws_secret_access_key %>
-  s3.bucket = <%= @s3_bucket %>
-  s3.path = <%= @s3_path %>
-  s3.keep = <%= @s3_keep %>
-end
+# encoding: utf-8
 
-Backup::Encryptor::GPG.defaults do |encryption|
-  encryption.key = open(File.join("keys", "backups.public.gpg")).read
-end
+##
+# Backup
+# Generated Main Config Template
+#
+# For more information:
+#
+# View the Git repository at https://github.com/meskyanichi/backup
+# View the Wiki/Documentation at https://github.com/meskyanichi/backup/wiki
+# View the issue log at https://github.com/meskyanichi/backup/issues
 
-Backup::Database::MySQL.defaults do |db|
-  db.name = <%= @mysql_database %>
-  db.username = <%= @mysql_username %>
-  db.password = <%= @mysql_password %>
-  <% if @mysql_socket %>
-  db.socket = <%= @mysql_socket %>
-  <% else %>
-  db.host = <%= @mysql_host %>
-  db.port = <%= @mysql_port %>
-  <% end %>
-  db.additional_options = ["--quick", "--single-transaction"]
+<% if @encryption_password.nil? %>
+<% else %>
+Backup::Encryptor::OpenSSL.defaults do |encryption|
+  encryption.password = "<%= @encryption_password %>"
+  encryption.base64   = true
+  encryption.salt     = true
 end
-
-Backup::Database::MongoDB.defaults  do |db|
-  db.name = <%= @mongodb_database %>
-  db.username = <%= @mongodb_username %>
-  db.password = <%= @mongodb_password %>
-  db.host = <%= @mongodb_host %>
-  db.port = <%= @mongodb_port %>
-  db.lock = <%= @mongodb_lock %>
-  db.ipv6 = <%= @mongodb_ipv6 %>
-end
-
-Backup::Database::Redis.defaults do |db|
-  db.name = <%= @redis_database %>
-  db.path = <%= @redis_path %>
-  db.password = <%= @redis_password %>
-  db.host = <%= @redis_host %>
-  db.port = <%= @redis_port %>
-  db.invoke_save = <%= @redis_invoke_save %>
-end
-
+<% end %>
+##
+# Load all models from the models directory (after the above global configuration blocks)
 Dir[File.join(File.dirname(Config.config_file), "models", "*.rb")].each do |model|
   instance_eval(File.read(model))
 end
+

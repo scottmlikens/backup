@@ -1,9 +1,0 @@
-Backup::Model.new(<%= @backup_model %>, 'Backups for <%= @databases %>') do
-  split_into_chunks_of <%= @split_into_chunks_of %>
-  <% @databases.each do |db| %>
-  database <%= db %>
-  <% end %>
-  store_with S3
-  compress_with Gzip
-  encrypt_with GPG
-end
