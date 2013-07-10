@@ -1,3 +1,8 @@
+begin
+  use_inline_resources
+rescue
+end
+
 action :setup do
   %w{keys models logs}.each do |p|
     directory "#{new_resource.base_dir}/#{p}" do
@@ -7,12 +12,12 @@ action :setup do
   end
   
   template "#{new_resource.base_dir}/config.rb" do
-    source "config.rb.erb"
+    source new_resource.source
+    cookbook new_resource.cookbook
     variables({
                 :encryption_password => new_resource.encryption_password
               })
   end
-  new_resource.updated_by_last_action(true)
 end
 
 action :remove do
@@ -20,6 +25,5 @@ action :remove do
     action :remove
     recursive true
   end
-  new_resource.updated_by_last_action(true)
 end
 

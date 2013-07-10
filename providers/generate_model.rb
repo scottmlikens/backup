@@ -1,3 +1,8 @@
+begin
+  use_inline_resources
+rescue
+end
+
 action :backup do
   cron "scheduled backup: " + new_resource.name do
     hour new_resource.hour || "1" 
@@ -5,8 +10,12 @@ action :backup do
     day new_resource.day || "*"
     month new_resource.month || "*"
     weekday new_resource.weekday || "*"
-    mailto new_resource.mailto 
-    command "backup perform -t #{new_resource.name} -c #{new_resource.base_dir}/config.rb"
+    mailto new_resource.mailto
+    if node['languages']['ruby'].empty?
+      command "/opt/chef/embedded/bin/backup perform -t #{new_resource.name} -c #{new_resource.base_dir}/config.rb"
+    else
+      command "#{node['languages']['ruby']['bin_dir']}/backup perform -t #{new_resource.name} -c #{new_resource.base_dir}/config.rb"
+    end
     path new_resource.base_dir
     action :nothing
   end
@@ -26,14 +35,12 @@ action :backup do
               })
     notifies :create, resources(:cron => "scheduled backup: " + new_resource.name), :immediately
   end
-  new_resource.updated_by_last_action(true)
 end
 
 action :disable do
   cron "scheduled backup: " + current_resource.name do
     action :remove
   end
-  new_resource.updated_by_last_action(true)
 end
 
 action :remove do
@@ -43,5 +50,4 @@ action :remove do
   cron "scheduled backup: " + current_resource.name do
     action :remove
   end
-  new_resource.updated_by_last_action(true)
 end
