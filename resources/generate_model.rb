@@ -2,7 +2,8 @@ actions :backup, :disable, :remove
 
 attribute :options, :kind_of => Hash
 attribute :base_dir, :kind_of => String, :default => "/opt/backup"
-attribute :split_into_chunks_of, :kind_of => Fixnum, :default => 250
+attribute :gem_bin_dir, :kind_of => String, :default => nil
+attribute :split_into_chunks_of, :kind_of => Fixnum, :default => nil
 attribute :description, :kind_of => String, :default => nil
 attribute :backup_type, :kind_of => String, :default => "database"
 attribute :database_type, :kind_of => String, :default => nil
@@ -13,6 +14,9 @@ attribute :day, :kind_of => String, :default => "*"
 attribute :month, :kind_of => String, :default => "*"
 attribute :weekday, :kind_of => String, :default => "*"
 attribute :mailto, :kind_of => String, :default => nil
+attribute :tmp_path, :kind_of => String, :default => nil
+attribute :cron_path, :kind_of => String, :default => nil
+attribute :cron_log, :kind_of => String, :default => nil
 
 def initialize(*args)
   super

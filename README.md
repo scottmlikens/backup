@@ -111,6 +111,12 @@ Actions:
     <td></td>
   </tr>
   <tr>
+    <td><tt>gem_bin_dir</tt></td>
+    <td>String</td>
+    <td>Path where gem binaries, such as backup, reside</td>
+    <td>></td>
+    <td></td>
+  <tr>
     <td><tt>split_into_chunks_of</tt></td>
     <td>Fixnum</td>
     <td>Split the backup archive into multiple smaller files</td>
@@ -175,6 +181,24 @@ Actions:
     <td>sets the MAILTO variable in the crontab to specify who should get the output of the crontab run</td>
     <td></td>
   </tr>
+  <tr>
+    <td><tt>tmp_path</tt></td>
+    <td>String</td>
+    <td>sets the tmp path for the backup</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt>cron_path</tt></td>
+    <td>String</td>
+    <td>sets the PATH variable in the crontab to specify who should get the output of the crontab run</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt>cron_log</tt></td>
+    <td>String</td>
+    <td>Log file for redirecting the cron job output</td>
+    <td></td>
+  </tr>
 </table>
 
 Usage
@@ -198,6 +222,9 @@ backup_generate_model "mongodb" do
   store_with({"engine" => "S3", "settings" => { "s3.access_key_id" => "example", "s3.secret_access_key" => "sample", "s3.region" => "us-east-1", "s3.bucket" => "sample", "s3.path" => "/", "s3.keep" => 10 } } )  
   options({"db.host" => "\"localhost\"", "db.lock" => true})  
   mailto "some@example.com"  
+  cron_path "/bin:/usr/bin:/usr/local/bin"
+  tmp_path "/mnt/backups"
+  cron_log "/var/log/backups.log"
   action :backup  
 end  
 ```

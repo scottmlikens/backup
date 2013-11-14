@@ -15,11 +15,11 @@ libxml2 = value_for_platform(
                              )
   package libxml2 
   package libxslt1
-  gem_package "backup" 
-#    action :install
-#    version new_resource.version unless new_resourve.version.empty?
-#    version new_resource.version
-#  end
+  gem_package "backup" do
+    action :install
+    version new_resource.version unless new_resource.version.empty?
+    #version new_resource.version
+  end
 end
 
 action :remove do

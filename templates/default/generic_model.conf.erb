@@ -7,14 +7,15 @@
 # $ backup perform -t <%= @name %> [-c <path_to_configuration_file>]
 #
 Backup::Model.new(:<%= @name %>, '<%= @description %>') do
-
-##
-# Split [Splitter]
-#
-# Split the backup file in to chunks of <%= @split_into_chunks_of %> megabytes
-# if the backup file size exceeds <%= @split_into_chunks_of %> megabytes
-#
-split_into_chunks_of <%= @split_into_chunks_of %>
+<% if @split_into_chunks_of %>
+  ##
+  # Split [Splitter]
+  #
+  # Split the backup file in to chunks of <%= @split_into_chunks_of %> megabytes
+  # if the backup file size exceeds <%= @split_into_chunks_of %> megabytes
+  #
+  split_into_chunks_of <%= @split_into_chunks_of %>
+<% end %>
 
 <% if @store_with %>
   store_with <%= @store_with["engine"] %> do |<%= @store_with["engine"].downcase %>|
