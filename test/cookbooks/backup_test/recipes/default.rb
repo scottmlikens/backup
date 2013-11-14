@@ -38,3 +38,11 @@ end
 execute "backup now" do
   command "/opt/chef/embedded/bin/backup perform -t archive -c /opt/backup/config.rb"
 end
+
+# Test that cron management isn't only on model creation any longer by
+# deleting and immediately having it added back by notifying
+# backup_generate_model
+cron "scheduled backup: archive" do
+  action :delete
+  notifies :backup, "backup_generate_model[archive]", :immediately
+end
