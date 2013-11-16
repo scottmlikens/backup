@@ -34,6 +34,7 @@ platforms:
 suites:
 - name: default
   run_list:
+  - recipe[apt]
   - recipe[build-essential]
   - recipe[minitest-handler]
   - recipe[backup_test::default]
