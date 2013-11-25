@@ -2,8 +2,6 @@ site :opscode
 
 metadata
 
-cookbook "build-essential"
-
 group :integration do
   cookbook "apt"
   cookbook "yum"
