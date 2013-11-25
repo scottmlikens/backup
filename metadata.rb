@@ -9,7 +9,7 @@ version          "0.0.6"
   supports os
 end
 
-%w{build-essential}.each do |cb|
-  depends cb
+%w{build-essential cron}.each do |cb|
+  depends cb 
 end
 

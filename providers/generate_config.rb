@@ -25,5 +25,8 @@ action :remove do
     action :remove
     recursive true
   end
+  cron "scheduled backup: " + new_resource.name do
+    action :remove
+  end
 end
 
