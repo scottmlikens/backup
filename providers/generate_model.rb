@@ -1,3 +1,7 @@
+def whyrun_supported?
+  true
+end
+
 begin
   use_inline_resources
 rescue
