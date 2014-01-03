@@ -22,7 +22,6 @@ libxml2 = value_for_platform(
   gem_package "backup" do
     action :install
     version new_resource.version unless new_resource.version.empty?
-    #version new_resource.version
   end
 end
 
