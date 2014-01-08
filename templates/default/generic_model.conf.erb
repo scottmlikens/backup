@@ -20,7 +20,7 @@ Backup::Model.new(:<%= @name %>, '<%= @description %>') do
 <% if @store_with %>
   store_with <%= @store_with["engine"] %> do |<%= @store_with["engine"].downcase %>|
   <% @store_with["settings"].each_pair do |k,v| %>
-    <%= k %> = "<%= v %>"
+    <%= k %> = <%= ((v.is_a? String) ? "\"#{v}\"" : v) %>
     <% end %>
   end
 <% end %>
