@@ -2,13 +2,9 @@ def whyrun_supported?
   true
 end
 
-begin
-  use_inline_resources
-rescue
-end
+use_inline_resources
 
 action :install do
-include_recipe "build-essential"
 
 libxslt1 = value_for_platform(
                              ["centos", "redhat", "suse", "fedora" ] => { "default" => "libxslt-devel" },
@@ -22,9 +18,6 @@ libxml2 = value_for_platform(
   package libxml2 
   package libxslt1
 
-  gem_package "fog" do
-    version "> 1.9.0"
-  end
   gem_package "backup" do
     action :install
     version new_resource.version unless new_resource.version.empty?
