@@ -7,6 +7,8 @@ Requirements
 ============
 
 #### packages
+- `chef` - Chef 11+
+> Due to usage of use_inline_resources.
 - `ruby` - ruby is required for the backup gem to be installed.  This can be provided either via chef or via other means.
 - `libxml2-dev`
 - `libxslt1-dev`
