@@ -9,7 +9,7 @@ attribute :backup_type, :kind_of => String, :default => "database"
 attribute :database_type, :kind_of => String, :default => nil
 attribute :store_with, :kind_of => Hash
 attribute :hour, :kind_of => String, :default => "1"
-attribute :minute, :kind_of => String, :default => "0"
+attribute :minute, :kind_of => String, :default => "*"
 attribute :day, :kind_of => String, :default => "*"
 attribute :month, :kind_of => String, :default => "*"
 attribute :weekday, :kind_of => String, :default => "*"
