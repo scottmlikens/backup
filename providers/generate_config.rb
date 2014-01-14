@@ -3,7 +3,7 @@ def whyrun_supported?
 end
 
 begin
-  use_inline_resources
+  use_inline_resources if defined?(use_inline_resources)
 rescue
 end
 
