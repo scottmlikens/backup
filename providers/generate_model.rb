@@ -2,10 +2,7 @@ def whyrun_supported?
   true
 end
 
-begin
-  use_inline_resources if defined?(use_inline_resources)
-rescue
-end
+use_inline_resources if defined?(use_inline_resources)
 
 action :backup do
   template "#{new_resource.base_dir}/models/#{new_resource.name}.rb" do

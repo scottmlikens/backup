@@ -1,4 +1,10 @@
-## v0.0.7:
+## v0.0.9:
+
+* Remove rescue blocks around `use_inline_resources` and test for its existiance.
++ added a test suite to verify the cookbook works still with chef10
+
+
+## v0.0.8:
 
 * Backup on minute 0.  `*` would backup every minute at 1am
 * Enable `s3_options` which allows you to specify th S3 endpoint
@@ -9,6 +15,10 @@ store_with({"engine" => "S3", "settings" => { "s3.access_key_id" => "S3_ACCESS_K
 ```  
 
 - Removed blind rescue
+
+## v0.0.7:
+
+* Added whyrun support
 
 
 ## v0.0.6:
