@@ -1,3 +1,11 @@
+## v0.0.10: Unreleased
+
+* Remove references to require *Chef11*
+* Update reference to `split_into_chunks_of` as it is not set by default.
+* Update links to Backup documentation
+* Support `before_hook` and `after_hook`
+
+
 ## v0.0.9:
 
 * Remove rescue blocks around `use_inline_resources` and test for its existiance.

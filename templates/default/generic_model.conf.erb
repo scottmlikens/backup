@@ -17,6 +17,18 @@ Backup::Model.new(:<%= @name %>, '<%= @description %>') do
   split_into_chunks_of <%= @split_into_chunks_of %>
 <% end %>
 
+<% if @before_hook %>
+  before do
+    <%= @before_hook %>
+    end
+<% end %>
+
+<% if @after_hook %>
+   after do |exit_status|
+   <%= @after_hook %>
+   end
+<% end %>
+
 <% if @store_with %>
   store_with <%= @store_with["engine"] %> do |<%= @store_with["engine"].downcase %>|
   <% @store_with["settings"].each_pair do |k,v| %>

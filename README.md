@@ -7,8 +7,6 @@ Requirements
 ============
 
 #### packages
-- `chef` - Chef 11+
-> Due to usage of use_inline_resources.
 - `ruby` - ruby is required for the backup gem to be installed.  This can be provided either via chef or via other means.
 - `libxml2-dev`
 - `libxslt1-dev`
@@ -115,14 +113,14 @@ Actions:
   <tr>
     <td><tt>gem_bin_dir</tt></td>
     <td>String</td>
-    <td>Path where gem binaries, such as backup, reside</td>
-    <td>></td>
+    <td>Path where gem binaries, such as backup, reside (e.g. "/usr/local/bin" )</td>
+    <td><tt>nil</tt></td>
     <td></td>
   <tr>
     <td><tt>split_into_chunks_of</tt></td>
     <td>Fixnum</td>
     <td>Split the backup archive into multiple smaller files</td>
-    <td><tt>250</tt></td>
+    <td><tt>nil</tt></td>
   </tr>
   <tr>
     <td><tt>description</tt></td>
@@ -132,7 +130,7 @@ Actions:
   <tr>
     <td><tt>backup_type</tt></td>
     <td>String</td>
-    <td>What kind of backup? <a href="https://github.com/meskyanichi/backup/wiki/Archives">archive</a> or <a href="https://github.com/meskyanichi/backup/wiki/Databases">database</a></td>
+    <td>What kind of backup? <a href="http://meskyanichi.github.io/backup/v4/archives/">archive</a> or <a href="http://meskyanichi.github.io/backup/v4/databases/">database</a></td>
     <td><tt>database</tt></td>
   </tr>
   <tr>
@@ -157,7 +155,7 @@ Actions:
     <td><tt>minute</tt></td>
     <td>String</td>
     <td>How many minutes past the hour to run the backup</td>
-    <td><tt>*</tt></td>
+    <td><tt>0</tt></td>
   </tr>
   <tr>
     <td><tt>day</tt></td>
@@ -199,6 +197,18 @@ Actions:
     <td><tt>cron_log</tt></td>
     <td>String</td>
     <td>Log file for redirecting the cron job output</td>
+    <td></td>
+  </tr>
+   <tr>
+    <td><tt>before_hook</tt></td>
+    <td>String</td>
+    <td>Before hook runs ruby code just after 'Backup' logs that the backup has started, before any procedures are performed</td>
+    <td></td>
+  </tr>
+   <tr>
+    <td><tt>after_hook</tt></td>
+    <td>String</td>
+    <td>After hook runs ruby code just before any Notifiers and is guaranteed to run whether or not the backup process was successful or not</td>
     <td></td>
   </tr>
 </table>

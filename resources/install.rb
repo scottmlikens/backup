@@ -1,5 +1,6 @@
 actions :install, :remove
 
+# Version of the backup gem to install
 attribute :version, :kind_of => String, :default => String.new
 
 def initialize(*args)
