@@ -1,4 +1,9 @@
-## v0.0.10: Unreleased
+## v0.0.11:
+
+* Update `providers/generate_model.rb` that used the parameter `remove` in error; it should be `delete`.
+* Create test scenario to exercise this code
+
+## v0.0.10: 
 
 * Remove references to require *Chef11*
 * Update reference to `split_into_chunks_of` as it is not set by default.

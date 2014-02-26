@@ -43,16 +43,16 @@ action :backup do
 end
 
 action :disable do
-  cron "scheduled backup: " + current_resource.name do
-    action :remove
+  cron "scheduled backup: " + new_resource.name do
+    action :delete
   end
 end
 
 action :remove do
   file "#{new_resource.base_dir}/models/#{new_resource.name}.rb" do
-    action :remove
+    action :delete
   end
-  cron "scheduled backup: " + current_resource.name do
-    action :remove
+  cron "scheduled backup: " + new_resource.name do
+    action :delete
   end
 end
