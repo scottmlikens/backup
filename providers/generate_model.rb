@@ -17,7 +17,8 @@ action :backup do
                 :description => new_resource.description,
                 :backup_type => new_resource.backup_type,
                 :database_type => new_resource.database_type,
-                :store_with => new_resource.store_with
+                :store_with => new_resource.store_with,
+                :encrypt_with => new_resource.encrypt_with
               })
   end
   cron "scheduled backup: " + new_resource.name do

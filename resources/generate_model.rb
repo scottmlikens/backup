@@ -38,6 +38,9 @@ attribute :cron_log, :kind_of => String, :default => nil
 attribute :before_hook, :kind_of => String, :default => nil
 # After hook runs ruby code just before any Notifiers and is guaranteed to run whether or not the backup process was successful or not
 attribute :after_hook, :kind_of => String, :default => nil
+# encrypt_with.  Ruby Hash to specify how to encrypt your backups
+attribute :encrypt_with, :kind_of => Hash
+
 
 def initialize(*args)
   super

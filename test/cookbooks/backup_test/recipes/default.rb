@@ -39,6 +39,21 @@ execute "backup now" do
   command "/opt/chef/embedded/bin/backup perform -t archive -c /opt/backup/config.rb"
 end
 
+backup_generate_model "archive_encrypted" do
+  description "backup of /etc encrypted" 
+  backup_type "archive"
+  encrypt_with({"engine" => "OpenSSL", "settings" => { "encryption.password" => "kitchen", "encryption.base64" => "true", "encryption.salt" => "true"}})
+  store_with({"engine" => "Local", "settings" => { "local.keep" => 5, "local.path" => "/tmp" } })
+  options({"add" => ["/home/","/etc/"], "exclude" => ["/etc/init"], "tar_options" => "-p"})
+  mailto "sample@example.com"
+  action :backup
+end
+
+execute "backup now" do
+  command "/opt/chef/embedded/bin/backup perform -t archive_encrypted -c /opt/backup/config.rb"
+end
+  
+
 # Test that cron management isn't only on model creation any longer by
 # deleting and immediately having it added back by notifying
 # backup_generate_model

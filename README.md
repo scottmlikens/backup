@@ -62,12 +62,6 @@ Actions:
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>encryption_password</tt></td>
-    <td>String</td>
-    <td>Password to encrypt all backups with</td>
-    <td></td>
-  </tr>
-  <tr>
     <td><tt>base_dir</tt></td>
     <td>String</td>
     <td>Path where backup and it's configuration files and models reside</td>
@@ -96,7 +90,6 @@ Actions:
     <th>Description</th>
     <th>Default</th>
   </tr>
-
   <tr>
     <td><tt>options</tt></td>
     <td>Hash</td>
@@ -137,6 +130,12 @@ Actions:
     <td><tt>database_type</tt></td>
     <td>String</td>
     <td>Type of Database to backup</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt>encrypt_with</tt></td>
+    <td>Hash</td>
+    <td>Hash to specify how to <a href="http://meskyanichi.github.io/backup/v4/encryptors/">Encrypt</a> backups</td>
     <td></td>
   </tr>
   <tr>
@@ -211,6 +210,7 @@ Actions:
     <td>After hook runs ruby code just before any Notifiers and is guaranteed to run whether or not the backup process was successful or not</td>
     <td></td>
   </tr>
+
 </table>
 
 Usage

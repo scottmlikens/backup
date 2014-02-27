@@ -31,6 +31,9 @@ describe "backup" do
     it "should have a directory called /tmp/archive" do
       directory("/tmp/archive").must_exist
     end
+    it "should have a directory called /tmp/archive_encrypted" do
+      directory("/tmp/archive_encrypted").must_exist
+    end
     it "should have a cron entry called 'scheduled backup: no_split_test'" do
       cron("scheduled backup: no_split_test").must_exist
     end
