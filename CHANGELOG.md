@@ -1,3 +1,11 @@
+## v0.1.0:
+* Upgrade `backup` gem to *4.0.1*
++ Moves `/root/Backup/data` to `/opt/backup/.data` to preserve Storage Cycler information.
+* Write config.rb in the new format minus preloading model definitions.
+* Moved `encrypt_with` out of the `generate_config` provider and moved it into the `generate_model`.  See tests for working examples.
++ Update model template to support `encrypt_with` as well as minor cosmetic changes
+
+
 ## v0.0.11:
 
 * Update `providers/generate_model.rb` that used the parameter `remove` in error; it should be `delete`.

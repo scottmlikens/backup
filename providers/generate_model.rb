@@ -5,6 +5,10 @@ end
 use_inline_resources if defined?(use_inline_resources)
 
 action :backup do
+  # Upgrade Cycler data path to v4
+  execute "mv /root/backup/data /opt/#{new_resource.base_dir}/.data" do
+    only_if { ::File.exist?("/root/backup/data") }
+  end
   template "#{new_resource.base_dir}/models/#{new_resource.name}.rb" do
     mode 0600
     source new_resource.options["source"] || "generic_model.conf.erb"

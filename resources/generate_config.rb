@@ -8,6 +8,10 @@ attribute :base_dir, :kind_of => String, :default => "/opt/backup"
 attribute :cookbook, :kind_of => String, :default => "backup"
 # Filename of the erb template that generates config.rb 
 attribute :source, :kind_of => String, :default => "config.rb.erb"
+# Where temporary files can be created
+attribute :tmp_path, :kind_of => String, :default => "/tmp"
+# Where the storage cycler data is stored
+attribute :data_path, :kind_of => String, :default => "/opt/backup/.data"
 
 def initialize(*args)
   super

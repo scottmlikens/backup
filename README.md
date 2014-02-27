@@ -79,6 +79,18 @@ Actions:
     <td>Filename of the erb template that generates <code>config.rb</code></td>
     <td><tt>config.rb.erb</tt></td>
   </tr>
+  <tr>
+    <td><tt>tmp_path</tt></td>
+    <td>String</td>
+    <td>Directory to store temporary files during backup</td>
+    <td><tt>/tmp</tt></td>
+  </tr>
+  <tr>
+    <td><tt>data_path</tt></td>
+    <td>String</td>
+    <td>Directory to store Storage Cycler YAML files</td>
+    <td><tt>/opt/backup/.data</tt></td>
+  </tr>
 </table>
 
 ### backup::generate_model

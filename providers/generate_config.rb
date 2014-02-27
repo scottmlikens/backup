@@ -5,7 +5,7 @@ end
 use_inline_resources if defined?(use_inline_resources)
 
 action :setup do
-  %w{keys models logs}.each do |p|
+  %w{keys .data models logs}.each do |p|
     directory "#{new_resource.base_dir}/#{p}" do
       action :create
       recursive true
@@ -16,7 +16,9 @@ action :setup do
     source new_resource.source
     cookbook new_resource.cookbook
     variables({
-                :encryption_password => new_resource.encryption_password
+                :root_path => new_resource.base_dir,
+                :tmp_path => new_resource.tmp_path,
+                :data_path => new_resource.data_path
               })
   end
 end

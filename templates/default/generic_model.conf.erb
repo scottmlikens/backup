@@ -6,7 +6,7 @@
 # 
 # $ backup perform -t <%= @name %> [-c <path_to_configuration_file>]
 #
-Backup::Model.new(:<%= @name %>, '<%= @description %>') do
+Model.new(:<%= @name %>, '<%= @description %>') do
 <% if @split_into_chunks_of %>
   ##
   # Split [Splitter]
@@ -40,7 +40,7 @@ Backup::Model.new(:<%= @name %>, '<%= @description %>') do
   store_with <%= @store_with["engine"] %> do |<%= @store_with["engine"].downcase %>|
   <% @store_with["settings"].each_pair do |k,v| %>
     <%= k %> = <%= ((v.is_a? String) ? "\"#{v}\"" : v) %>
-    <% end %>
+  <% end %>
   end
 <% end %>
   ##
