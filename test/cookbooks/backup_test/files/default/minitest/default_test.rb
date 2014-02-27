@@ -34,6 +34,12 @@ describe "backup" do
     it "should have a directory called /tmp/archive_encrypted" do
       directory("/tmp/archive_encrypted").must_exist
     end
+    it "should have a cron entry called 'scheduled backup: archive'" do
+      cron("scheduled backup: archive").must_exist
+    end
+    it "should have a cron entry called 'scheduled backup: archive'" do
+      cron("scheduled backup: archive_encrypted").must_exist
+    end
     it "should have a cron entry called 'scheduled backup: no_split_test'" do
       cron("scheduled backup: no_split_test").must_exist
     end
@@ -44,6 +50,11 @@ describe "backup" do
       let(:config) { file("/opt/backup/models/no_split_test.rb") }
       it { config.must_exist }
       it { config.wont_include 'split_into_chunks_of' }
+    end
+    describe "should have a model with encryption" do
+      let(:config) { file("/opt/backup/models/archive_encrypted.rb") }
+      it { config.must_exist }
+      it { config.must_include 'encrypt_with OpenSSL' }
     end
     it "should have a cron entry called 'scheduled backup: archive_attribute_test'" do
       cron("scheduled backup: archive_attribute_test").must_exist
