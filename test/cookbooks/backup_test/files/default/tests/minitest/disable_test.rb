@@ -4,8 +4,8 @@ describe "backup" do
     include MiniTest::Chef::Assertions
     include MiniTest::Chef::Context
     include MiniTest::Chef::Resources
-    it "should have a cron entry called 'scheduled backup: archive_attribute_test'" do
-      cron("scheduled backup: archive").wont_exist
+    it "should have a cron entry called 'archive_attribute_test'" do
+      file("/etc/cron.d/archive").wont_exist
     end
     it "should not have a file called /opt/backup/models/no_split_test.rb" do
       file("/opt/backup/models/no_split_test.rb").wont_exist

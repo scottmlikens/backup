@@ -6,7 +6,7 @@ use_inline_resources if defined?(use_inline_resources)
 
 action :backup do
   # Upgrade Cycler data path to v4
-  execute "mv /root/backup/data /opt/#{new_resource.base_dir}/.data" do
+  execute "mv /root/backup/data #{new_resource.base_dir}/.data" do
     only_if { ::File.exist?("/root/backup/data") }
   end
   template "#{new_resource.base_dir}/models/#{new_resource.name}.rb" do
@@ -25,7 +25,7 @@ action :backup do
                 :encrypt_with => new_resource.encrypt_with
               })
   end
-  cron "scheduled backup: " + new_resource.name do
+  cron_d new_resource.name do
     hour new_resource.hour || "1" 
     minute new_resource.minute || "*"
     day new_resource.day || "*"
@@ -48,7 +48,7 @@ action :backup do
 end
 
 action :disable do
-  cron "scheduled backup: " + new_resource.name do
+  cron_d new_resource.name do
     action :delete
   end
 end
@@ -57,7 +57,7 @@ action :remove do
   file "#{new_resource.base_dir}/models/#{new_resource.name}.rb" do
     action :delete
   end
-  cron "scheduled backup: " + new_resource.name do
+  cron_d new_resource.name do
     action :delete
   end
 end

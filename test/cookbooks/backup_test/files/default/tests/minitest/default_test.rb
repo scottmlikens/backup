@@ -7,8 +7,8 @@ describe "backup" do
     it "should have the backup gem" do
       gem_package("backup").must_be_installed
     end
-    it "should have a cron entry called 'scheduled backup: archive'" do
-      cron("scheduled backup: archive").must_exist
+    it "should have a cron entry called 'archive'" do
+      file("/etc/cron.d/archive").must_exist
     end
     it "should have the development libraries for libxml2 installed" do
       if node.platform_family.include?("rhel")
@@ -34,14 +34,14 @@ describe "backup" do
     it "should have a directory called /tmp/archive_encrypted" do
       directory("/tmp/archive_encrypted").must_exist
     end
-    it "should have a cron entry called 'scheduled backup: archive'" do
-      cron("scheduled backup: archive").must_exist
+    it "should have a cron entry called 'archive'" do
+      file("/etc/cron.d/archive").must_exist
     end
-    it "should have a cron entry called 'scheduled backup: archive'" do
-      cron("scheduled backup: archive_encrypted").must_exist
+    it "should have a cron entry called 'archive'" do
+      file("/etc/cron.d/archive_encrypted").must_exist
     end
-    it "should have a cron entry called 'scheduled backup: no_split_test'" do
-      cron("scheduled backup: no_split_test").must_exist
+    it "should have a cron entry called 'no_split_test'" do
+      file("/etc/cron.d/no_split_test").must_exist
     end
     it "should have a directory called /tmp/no_split_test" do
       directory("/tmp/no_split_test").must_exist
@@ -56,14 +56,14 @@ describe "backup" do
       it { config.must_exist }
       it { config.must_include 'encrypt_with OpenSSL' }
     end
-    it "should have a cron entry called 'scheduled backup: archive_attribute_test'" do
-      cron("scheduled backup: archive_attribute_test").must_exist
+    it "should have a cron entry called 'archive_attribute_test'" do
+      file("/etc/cron.d/archive_attribute_test").must_exist
     end
-    describe "should have a cron entry called 'scheduled backup: archive_attribute_test'" do
-      let(:entry) { cron("scheduled backup: archive_attribute_test") }
+    describe "should have a cron entry called 'archive_attribute_test'" do
+      let(:entry) { file("/etc/cron.d/archive_attribute_test") }
       it { entry.must_exist }
-      it { entry.must_have(:path, '/bin:/usr/bin:/usr/local/bin:/opt/chef/embedded/bin') }
-      it { entry.must_have(:command, '/usr/local/bin/backup perform -t archive_attribute_test -c /opt/backup/config.rb --tmp-path /opt/tmp/backups >> /var/log/backups.log 2>&1') }
+      it { entry.must_match('/bin:/usr/bin:/usr/local/bin:/opt/chef/embedded/bin') }
+      it { entry.must_match('/usr/local/bin/backup perform -t archive_attribute_test -c /opt/backup/config.rb --tmp-path /opt/tmp/backups >> /var/log/backups.log 2>&1') }
     end
     it "should have a directory called /tmp/archive_attribute_test" do
       directory("/tmp/archive_attribute_test").must_exist
