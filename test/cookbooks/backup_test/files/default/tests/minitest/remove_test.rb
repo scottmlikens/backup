@@ -11,8 +11,8 @@ describe "backup" do
     it "should have /etc/cron.d/archive" do
       file("/etc/cron.d/archive").must_exist
     end
-    it "should not have /etc/cron.d/no_split_test" do
-      file("/etc/cron.d/no_split_test").wont_exist
+    it "should have /etc/cron.d/no_split_test" do
+      file("/etc/cron.d/no_split_test").must_exist
     end
   end
 end
