@@ -25,7 +25,7 @@ end
 
 action :remove do
   directory new_resource.base_dir do
-    action :remove
+    action :delete
     recursive true
   end
 end
