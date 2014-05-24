@@ -1,3 +1,13 @@
+## v0.2.0:
+* Move from `crontab` resource to `cron_d`
++ Fix a bug in `generate_config` that would prevent you from properly running 
+```ruby
+backup_generate_config "bob" do
+  action :remove
+end
+```  
++ Improved the testing
+
 ## v0.1.0:
 * Upgrade `backup` gem to *4.0.1*
 + Moves `/root/Backup/data` to `/opt/backup/.data` to preserve Storage Cycler information.
