@@ -45,6 +45,10 @@ action :backup do
     end
     action :create
   end
+  # We delete the old crontab if it's hanging around as we moved to cron_d
+  crontab new_resource.name do
+    action :delete
+  end
 end
 
 action :disable do
