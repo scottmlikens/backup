@@ -1,5 +1,6 @@
 Backup Cookbook
 ===================
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/damm/backup?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 This cookbook automates deploying the [backup](https://github.com/meskyanichi/backup) gem and the configuration of any *models* you may want.  With a little work you can backup everything using this cookbook as the framework.
 
