@@ -35,7 +35,7 @@ backup_generate_model "archive" do
 end
 
 execute "backup now" do
-  command "/opt/chef/embedded/bin/backup perform -t archive -c /opt/backup/config.rb"
+  command "#{node['languages']['ruby']['bin_dir']}/backup perform -t archive -c /opt/backup/config.rb"
 end
 
 backup_generate_model "archive_encrypted" do
@@ -49,7 +49,7 @@ backup_generate_model "archive_encrypted" do
 end
 
 execute "backup now" do
-  command "/opt/chef/embedded/bin/backup perform -t archive_encrypted -c /opt/backup/config.rb"
+  command "#{node['languages']['ruby']['bin_dir']}/backup perform -t archive_encrypted -c /opt/backup/config.rb"
 end
   
 backup_generate_model "no_split_test" do
@@ -62,7 +62,7 @@ backup_generate_model "no_split_test" do
 end
 
 execute "backup now no_split_test" do
-  command "/opt/chef/embedded/bin/backup perform -t no_split_test -c /opt/backup/config.rb"
+  command "#{node['languages']['ruby']['bin_dir']}/backup perform -t no_split_test -c /opt/backup/config.rb"
 end
 
 backup_generate_model "archive_attribute_test" do
@@ -80,5 +80,5 @@ backup_generate_model "archive_attribute_test" do
 end
 
 execute "backup now archive_attribute_test" do
-  command "/opt/chef/embedded/bin/backup perform -t archive_attribute_test -c /opt/backup/config.rb"
+  command "#{node['languages']['ruby']['bin_dir']}/backup perform -t archive_attribute_test -c /opt/backup/config.rb"
 end
