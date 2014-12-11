@@ -2,6 +2,8 @@ Backup Cookbook
 ===================
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/damm/backup?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/damm/)
+
 This cookbook automates deploying the [backup](https://github.com/meskyanichi/backup) gem and the configuration of any *models* you may want.  With a little work you can backup everything using this cookbook as the framework.
 
 Requirements
