@@ -239,8 +239,8 @@ This cookbook is intended to be a framework to help backup your systems.  Some e
 backup_install node.name
 backup_generate_config node.name
 gem_package "fog" do  
-    version "~> 1.4.0"  
-  end  
+  version "~> 1.4.0"  
+end  
 backup_generate_model "mongodb" do  
   description "Our shard"  
   backup_type "database"  
@@ -273,7 +273,7 @@ backup_generate_model "pg" do
   options({"db.name" => "\"postgres\"", "db.username" => "\"postgres\"", "db.password" => "\"somepassword\"", "db.host" => "\"localhost\"" })  
   mailto "sample@example.com"  
   action :backup  
-  end
+end
 ```
 
 ### Archiving files to S3
