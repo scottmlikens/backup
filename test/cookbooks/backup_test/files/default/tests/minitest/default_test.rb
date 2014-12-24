@@ -56,6 +56,7 @@ describe "backup" do
       let(:config) { file("/opt/backup/models/archive_encrypted.rb") }
       it { config.must_exist }
       it { config.must_include 'encrypt_with OpenSSL' }
+      it { config.wont_include 'MAILTO' }
     end
     it "should have a cron entry called 'archive_attribute_test'" do
       file("/etc/cron.d/archive_attribute_test").must_exist

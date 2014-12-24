@@ -1,3 +1,7 @@
+## v0.2.3:
+
++ check if `mailto` is defined and if it's not that's fine.
+
 ## v0.2.2:
 
 + Bump the _version_ of the `backup` gem to *4.1.1*

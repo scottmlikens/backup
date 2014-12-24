@@ -32,7 +32,11 @@ action :backup do
     day new_resource.day || "*"
     month new_resource.month || "*"
     weekday new_resource.weekday || "*"
-    mailto new_resource.mailto
+    if new_resource.mailto
+      mailto new_resource.mailto
+    else
+      Chef::Log.warn 'No MAILTO defined'
+    end
     # if node['languages']['ruby'].empty?
     #   cmd = "/opt/chef/embedded/bin/backup perform -t #{new_resource.name} -c #{new_resource.base_dir}/config.rb"
     if new_resource.gem_bin_dir

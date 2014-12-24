@@ -44,7 +44,6 @@ backup_generate_model "archive_encrypted" do
   encrypt_with({"engine" => "OpenSSL", "settings" => { "encryption.password" => "kitchen", "encryption.base64" => "true", "encryption.salt" => "true"}})
   store_with({"engine" => "Local", "settings" => { "local.keep" => 5, "local.path" => "/tmp" } })
   options({"add" => ["/home/","/etc/"], "exclude" => ["/etc/init"], "tar_options" => "-p"})
-  mailto "sample@example.com"
   action :backup
 end
 
