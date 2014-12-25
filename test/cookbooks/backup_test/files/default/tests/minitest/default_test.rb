@@ -50,6 +50,7 @@ describe "backup" do
     describe "should have a model file for no_split_test" do
       let(:config) { file("/opt/backup/models/no_split_test.rb") }
       it { config.must_exist }
+      it { config.wont_include 'notify_by' }
       it { config.wont_include 'split_into_chunks_of' }
     end
     describe "should have a model with encryption" do
@@ -57,6 +58,12 @@ describe "backup" do
       it { config.must_exist }
       it { config.must_include 'encrypt_with OpenSSL' }
       it { config.wont_include 'MAILTO' }
+      it { config.wont_include 'notify_by' }
+    end
+    describe "should have a model with attributes and notification" do
+      let(:config) { file("/opt/backup/models/archive_attribute_test.rb") }
+      it { config.must_exist }
+      it { config.must_include 'notify_by' }
     end
     it "should have a cron entry called 'archive_attribute_test'" do
       file("/etc/cron.d/archive_attribute_test").must_exist
