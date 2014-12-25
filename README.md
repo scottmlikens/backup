@@ -35,7 +35,7 @@ Actions:
 
 Generate a configuration file for the backup gem with this resource.
 
-Actions: 
+Actions:
 
 * `setup` - sets up a basic config.rb for the backup gem
 * `remove` - **removes the base directory for the backup gem** and everything underneath it.
@@ -225,7 +225,12 @@ Actions:
     <td>After hook runs ruby code just before any Notifiers and is guaranteed to run whether or not the backup process was successful or not</td>
     <td></td>
   </tr>
-
+  <tr>
+    <td><tt>notify_by</tt></td>
+    <td>Hash</td>
+    <td>Hash object that configures [Notifiers](http://meskyanichi.github.io/backup/v4/notifiers/)</td>
+    <td></td>
+  </tr>
 </table>
 
 Usage
@@ -255,7 +260,7 @@ backup_generate_model "mongodb" do
   action :backup  
 end  
 ```
-      
+
 ### PostgreSQL
 
 ```ruby
@@ -279,7 +284,7 @@ end
 ### Archiving files to S3
 
 ```ruby
-backup_install node.name   
+backup_install node.name
 backup_generate_config node.name  
 gem_package "fog" do  
   version "~> 1.4.0"  
@@ -293,6 +298,25 @@ backup_generate_model "home" do
   mailto "sample@example.com"  
   action :backup  
 end  
+```
+
+### Notifications
+
+```ruby
+backup_generate_model "archive_attribute_test" do
+  description "backup of /etc using additional attributes"
+  backup_type "archive"
+  split_into_chunks_of 250
+  store_with({"engine" => "Local", "settings" => { "local.keep" => 5, "local.path" => "/tmp" } })
+  options({"add" => ["/home/","/etc/"], "exclude" => ["/etc/init"], "tar_options" => "-p"})
+  mailto "sample@example.com"
+  action :backup
+  notify_by({"method" => "Campfire", "settings" => {"campfire.on_success" => "true", "campfire.on_warning" => "true", "campfire.on_failure" => "true", "campfire.api_token" => "token", "campfire.subdomain" => "domain", "campfire.room_id" => '34' }})
+  gem_bin_dir "/usr/local/bin"
+  cron_path "/bin:/usr/bin:/usr/local/bin:/opt/chef/embedded/bin"
+  cron_log "/var/log/backups.log"
+  tmp_path "/opt/tmp/backups"
+end
 ```
 
 > It is possible to load the settings in an *role* or an *data bag* or leave the settings in a recipe.
@@ -309,7 +333,7 @@ you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
-    
+
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the License for the specific language governing permissions and limitations under the License.

@@ -23,6 +23,7 @@ action :backup do
                 :database_type => new_resource.database_type,
                 :store_with => new_resource.store_with,
                 :encrypt_with => new_resource.encrypt_with,
+                :notify_by => new_resource.notify_by,
                 :after_hook => new_resource.after_hook
               })
   end

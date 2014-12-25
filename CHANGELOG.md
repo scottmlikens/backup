@@ -1,6 +1,7 @@
 ## v0.2.3:
 
 + check if `mailto` is defined and if it's not that's fine.
++ support *notifiers* with `notify_by`
 
 ## v0.2.2:
 

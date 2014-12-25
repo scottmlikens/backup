@@ -17,6 +17,14 @@ Model.new(:<%= @name %>, '<%= @description %>') do
   split_into_chunks_of <%= @split_into_chunks_of %>
 <% end %>
 
+<% if @notify_by %>
+  notify_by <%= @notify_by["method"] %> do |<%= @notify_by["method"].downcase %>|
+  <% @notify_by["settings"].each_pair do |k,v| %>
+    <%= k %> = <%= ((v.is_a? String) ? "\"#{v}\"" : v) %>
+  <% end %>
+  end
+<% end %>
+
 <% if @encrypt_with %>
   encrypt_with <%= @encrypt_with["engine"] %> do |encryption|
   <% @encrypt_with["settings"].each_pair do |k,v| %>

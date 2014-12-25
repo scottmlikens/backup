@@ -72,6 +72,7 @@ backup_generate_model "archive_attribute_test" do
   options({"add" => ["/home/","/etc/"], "exclude" => ["/etc/init"], "tar_options" => "-p"})
   mailto "sample@example.com"
   action :backup
+  notify_by({"method" => "Campfire", "settings" => {"campfire.on_success" => "true", "campfire.on_warning" => "true", "campfire.on_failure" => "true", "campfire.api_token" => "token", "campfire.subdomain" => "domain", "campfire.room_id" => '34' }})
   gem_bin_dir "/usr/local/bin"
   cron_path "/bin:/usr/bin:/usr/local/bin:/opt/chef/embedded/bin"
   cron_log "/var/log/backups.log"
