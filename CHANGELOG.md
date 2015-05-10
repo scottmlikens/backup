@@ -1,3 +1,11 @@
+## v0.2.4:
+
++ Improve testing material
++ Bump `version` to the latest version of the Backup gem
++ Include the dependencies it needs like zlib1g-dev and liblzma-dev (and centos varients)
+- Bump the centos version to 6.6
+
+
 ## v0.2.3:
 
 + check if `mailto` is defined and if it's not that's fine.
@@ -18,12 +26,12 @@
 
 ## v0.2.0:
 * Move from `crontab` resource to `cron_d`
-+ Fix a bug in `generate_config` that would prevent you from properly running 
++ Fix a bug in `generate_config` that would prevent you from properly running
 ```ruby
 backup_generate_config "bob" do
   action :remove
 end
-```  
+```
 + Improved the testing
 
 ## v0.1.0:
@@ -39,7 +47,7 @@ end
 * Update `providers/generate_model.rb` that used the parameter `remove` in error; it should be `delete`.
 * Create test scenario to exercise this code
 
-## v0.0.10: 
+## v0.0.10:
 
 * Remove references to require *Chef11*
 * Update reference to `split_into_chunks_of` as it is not set by default.
@@ -61,7 +69,7 @@ end
 ```ruby
 store_with({"engine" => "S3", "settings" => { "s3.access_key_id" => "S3_ACCESS_KEY", "s3.secret_access_key" => "S3_SECRET_ACCESS_KEY", "s3.bucket" => "BUCKET", "s3.path" => "DIR", "s3.keep" => 5, "s3.fog_options" => {  :host => 's3.DUMMY.DOMAIN.COM', :scheme => 'http', :port => 80 } } } )
   action :backup
-```  
+```
 
 - Removed blind rescue
 
@@ -79,7 +87,7 @@ store_with({"engine" => "S3", "settings" => { "s3.access_key_id" => "S3_ACCESS_K
 ## v0.0.5:
 
 * Improve README
-* Add Minitests 
+* Add Minitests
 * Use Inline Resources
 
 ## v.0.04:
