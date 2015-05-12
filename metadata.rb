@@ -4,13 +4,12 @@ maintainer_email "scott@likens.us"
 license          "Apache 2.0"
 description      "Installs/Configures backup"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.2.3"
+version          "0.2.4"
 
 %w{redhat centos fedora debian ubuntu}.each do |os|
   supports os
 end
 
 %w{build-essential cron}.each do |cb|
-  depends cb 
+  depends cb
 end
-
