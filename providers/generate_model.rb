@@ -14,7 +14,7 @@ action :backup do
     source new_resource.options["source"] || "generic_model.conf.erb"
     cookbook new_resource.options["cookbook"] || "backup"
     variables({
-                :name => new_resource.name, 
+                :name => new_resource.name,
                 :options => new_resource.options,
                 :base_dir => new_resource.base_dir,
                 :split_into_chunks_of => new_resource.split_into_chunks_of,
@@ -23,12 +23,13 @@ action :backup do
                 :database_type => new_resource.database_type,
                 :store_with => new_resource.store_with,
                 :encrypt_with => new_resource.encrypt_with,
+                :compress_with => new_resource.compress_with,
                 :notify_by => new_resource.notify_by,
                 :after_hook => new_resource.after_hook
               })
   end
   cron_d new_resource.name do
-    hour new_resource.hour || "1" 
+    hour new_resource.hour || "1"
     minute new_resource.minute || "*"
     day new_resource.day || "*"
     month new_resource.month || "*"

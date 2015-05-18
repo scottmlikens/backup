@@ -154,6 +154,12 @@ Actions:
     <td></td>
   </tr>
   <tr>
+    <td><tt>compress_with</tt></td>
+    <td>String</td>
+    <td>Specify the Compress Methodd (or disable it)</td>
+    <td>Gzip</td>
+  </tr>
+  <tr>
     <td><tt>store_with</tt></td>
     <td>Hash</td>
     <td>Specify what  <a href="https://github.com/meskyanichi/backup/wiki/Storages">storage</a> engines you wish enable.</td>
@@ -243,41 +249,41 @@ This cookbook is intended to be a framework to help backup your systems.  Some e
 ```ruby
 backup_install node.name
 backup_generate_config node.name
-gem_package "fog" do  
-  version "~> 1.4.0"  
-end  
-backup_generate_model "mongodb" do  
-  description "Our shard"  
-  backup_type "database"  
-  database_type "MongoDB"  
-  split_into_chunks_of 2048  
-  store_with({"engine" => "S3", "settings" => { "s3.access_key_id" => "example", "s3.secret_access_key" => "sample", "s3.region" => "us-east-1", "s3.bucket" => "sample", "s3.path" => "/", "s3.keep" => 10 } } )  
-  options({"db.host" => "\"localhost\"", "db.lock" => true})  
-  mailto "some@example.com"  
+gem_package "fog" do
+  version "~> 1.4.0"
+end
+backup_generate_model "mongodb" do
+  description "Our shard"
+  backup_type "database"
+  database_type "MongoDB"
+  split_into_chunks_of 2048
+  store_with({"engine" => "S3", "settings" => { "s3.access_key_id" => "example", "s3.secret_access_key" => "sample", "s3.region" => "us-east-1", "s3.bucket" => "sample", "s3.path" => "/", "s3.keep" => 10 } } )
+  options({"db.host" => "\"localhost\"", "db.lock" => true})
+  mailto "some@example.com"
   cron_path "/bin:/usr/bin:/usr/local/bin"
   tmp_path "/mnt/backups"
   cron_log "/var/log/backups.log"
-  action :backup  
-end  
+  action :backup
+end
 ```
 
 ### PostgreSQL
 
 ```ruby
-backup_install node.name  
-backup_generate_config node.name  
-gem_package "fog" do  
-  version "~> 1.4.0"  
-end  
-backup_generate_model "pg" do  
-  description "backup of postgres"  
-  backup_type "database"  
-  database_type "PostgreSQL"  
-  split_into_chunks_of 2048  
+backup_install node.name
+backup_generate_config node.name
+gem_package "fog" do
+  version "~> 1.4.0"
+end
+backup_generate_model "pg" do
+  description "backup of postgres"
+  backup_type "database"
+  database_type "PostgreSQL"
+  split_into_chunks_of 2048
   store_with({"engine" => "S3", "settings" => { "s3.access_key_id" => "sample", "s3.secret_access_key" => "sample", "s3.region" => "us-east-1", "s3.bucket" => "sample", "s3.path" => "/", "s3.keep" => 10 } } )
-  options({"db.name" => "\"postgres\"", "db.username" => "\"postgres\"", "db.password" => "\"somepassword\"", "db.host" => "\"localhost\"" })  
-  mailto "sample@example.com"  
-  action :backup  
+  options({"db.name" => "\"postgres\"", "db.username" => "\"postgres\"", "db.password" => "\"somepassword\"", "db.host" => "\"localhost\"" })
+  mailto "sample@example.com"
+  action :backup
 end
 ```
 
@@ -285,19 +291,19 @@ end
 
 ```ruby
 backup_install node.name
-backup_generate_config node.name  
-gem_package "fog" do  
-  version "~> 1.4.0"  
-end  
-backup_generate_model "home" do  
-  description "backup of /home"  
-  backup_type "archive"  
-  split_into_chunks_of 250  
-  store_with({"engine" => "S3", "settings" => { "s3.access_key_id" => "sample", "s3.secret_access_key" => "sample", "s3.region" => "us-east-1", "s3.bucket" => "sample", "s3.path" => "/", "s3.keep" => 10 } } )  
-  options({"add" => ["/home/","/root/"], "exclude" => ["/home/tmp"], "tar_options" => "-p"})  
-  mailto "sample@example.com"  
-  action :backup  
-end  
+backup_generate_config node.name
+gem_package "fog" do
+  version "~> 1.4.0"
+end
+backup_generate_model "home" do
+  description "backup of /home"
+  backup_type "archive"
+  split_into_chunks_of 250
+  store_with({"engine" => "S3", "settings" => { "s3.access_key_id" => "sample", "s3.secret_access_key" => "sample", "s3.region" => "us-east-1", "s3.bucket" => "sample", "s3.path" => "/", "s3.keep" => 10 } } )
+  options({"add" => ["/home/","/root/"], "exclude" => ["/home/tmp"], "tar_options" => "-p"})
+  mailto "sample@example.com"
+  action :backup
+end
 ```
 
 ### Notifications

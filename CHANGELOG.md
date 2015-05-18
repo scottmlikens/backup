@@ -1,3 +1,7 @@
+## v0.2.5 (unreleased):
+
+- Add `compress_with` to disable or change compression methods.
+
 ## v0.2.4:
 
 + Improve testing material

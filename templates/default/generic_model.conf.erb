@@ -3,7 +3,7 @@
 ##
 # Backup Generated: <%= @name %>
 # Once configured, you can run the backup with the following command:
-# 
+#
 # $ backup perform -t <%= @name %> [-c <path_to_configuration_file>]
 #
 Model.new(:<%= @name %>, '<%= @description %>') do
@@ -30,7 +30,7 @@ Model.new(:<%= @name %>, '<%= @description %>') do
   <% @encrypt_with["settings"].each_pair do |k,v| %>
     <%= k %> = <%= ((v.is_a? String) ? "\"#{v}\"" : v) %>
   <% end %>
-  end 
+  end
 <% end %>
 <% if @before_hook %>
   before do
@@ -51,10 +51,9 @@ Model.new(:<%= @name %>, '<%= @description %>') do
   <% end %>
   end
 <% end %>
-  ##
-  # Gzip [Compressor]
-  #
-  compress_with Gzip
+<% if @compress_with %>
+  compress_with <%= @compress_with %>
+<% end %>
   <% if @backup_type == "database" %>
   database <%= @database_type %> do |db|
   <% @options.each_pair do |k,v| %>
