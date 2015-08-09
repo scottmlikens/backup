@@ -1,4 +1,4 @@
-## v0.2.5 (unreleased):
+## v0.2.5:
 
 - Add `compress_with` to disable or change compression methods.
 
