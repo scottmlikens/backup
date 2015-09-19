@@ -4,6 +4,8 @@ engines:
     checks:
       Rubocop/Style/StringLiterals:
         enabled: false
+      Rubocop/Style/PercentLiteralDelimiters:
+        enabled: false
 ratings:
   paths:
   - "**.rb"
