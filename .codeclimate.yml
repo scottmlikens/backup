@@ -6,6 +6,8 @@ engines:
         enabled: false
       Rubocop/Style/PercentLiteralDelimiters:
         enabled: false
+       Rubocop/Style/SingleSpaceBeforeFirstArg:
+	enabled: false
 ratings:
   paths:
   - "**.rb"
