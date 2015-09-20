@@ -1,3 +1,7 @@
+## v0.2.6:
+
+- Modify `cron_path` so it has healthy defaults that should work.
+
 ## v0.2.5:
 
 - Add `compress_with` to disable or change compression methods.

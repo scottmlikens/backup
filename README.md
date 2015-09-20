@@ -211,7 +211,7 @@ Actions:
     <td><tt>cron_path</tt></td>
     <td>String</td>
     <td>sets the PATH variable in the crontab to specify who should get the output of the crontab run</td>
-    <td></td>
+    <td>/usr/bin:/bin:/usr/local/bin:/opt/chef/embedded/bin</td>
   </tr>
   <tr>
     <td><tt>cron_log</tt></td>

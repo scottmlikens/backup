@@ -48,7 +48,7 @@ action :backup do
     end
     command cmd + ( new_resource.tmp_path ? " --tmp-path #{new_resource.tmp_path}" : "" ) +  ( new_resource.cron_log ? " >> #{new_resource.cron_log} 2>&1" : "" )
     if new_resource.cron_path
-      path new_resource.cron_path
+      path "#{new_resource.cron_path}:#{node['languages']['ruby']['bin_dir']}"
     else
       path node['languages']['ruby']['bin_dir']
     end
