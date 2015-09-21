@@ -7,7 +7,15 @@ engines:
       Rubocop/Style/PercentLiteralDelimiters:
         enabled: false
        Rubocop/Style/SingleSpaceBeforeFirstArg:
-	enabled: false
+        enabled: false
+      Rubocop/Metrics/LineLength:
+        enabled: false
+      Rubocop/Style/HashSyntax:
+        enabled: false
+      Rubocop/Style/LeadingCommentSpace:
+        enabled: false
+      Rubocop/Style/BracesAroundHashParameters:
+        enabled: false
 ratings:
   paths:
   - "**.rb"
