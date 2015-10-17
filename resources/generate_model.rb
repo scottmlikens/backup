@@ -31,7 +31,7 @@ attribute :mailto, :kind_of => String, :default => nil
 # sets the tmp path for the backup
 attribute :tmp_path, :kind_of => String, :default => nil
 # sets the PATH variable in the crontab to specify who should get the output of the crontab run
-attribute :cron_path, :kind_of => String, :default => "/usr/bin:/bin:/usr/local/bin:/opt/chef/embedded/bin"
+attribute :cron_path, :kind_of => String, :default => "/usr/bin:/bin:/usr/local/bin"
 # Log file for redirecting the cron job output
 attribute :cron_log, :kind_of => String, :default => nil
 # Before hook runs ruby code just after 'Backup' logs that the backup has started, before any procedures are performed
