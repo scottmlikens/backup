@@ -25,6 +25,7 @@ action :backup do
                 :encrypt_with => new_resource.encrypt_with,
                 :compress_with => new_resource.compress_with,
                 :notify_by => new_resource.notify_by,
+                :before_hook => new_resource.before_hook,
                 :after_hook => new_resource.after_hook
               })
   end
