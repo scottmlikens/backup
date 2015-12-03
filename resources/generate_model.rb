@@ -44,6 +44,8 @@ attribute :encrypt_with, :kind_of => Hash
 attribute :compress_with, :kind_of => String, :default => "Gzip"
 # notify_by.  Ruby hash to specify how to notify your backups are completed
 attribute :notify_by, :kind_of => Hash
+# Enable and configure backup Syncers
+attribute :sync_with, :kind_of => Hash
 
 def initialize(*args)
   super

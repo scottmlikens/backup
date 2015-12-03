@@ -26,7 +26,8 @@ action :backup do
                 :compress_with => new_resource.compress_with,
                 :notify_by => new_resource.notify_by,
                 :before_hook => new_resource.before_hook,
-                :after_hook => new_resource.after_hook
+                :after_hook => new_resource.after_hook,
+                :sync_with => new_resource.sync_with
               })
   end
   cron_d new_resource.name do

@@ -76,4 +76,28 @@ Model.new(:<%= @name %>, '<%= @description %>') do
     <% end %>
   end
 <% end %>
+
+<% if @sync_with %>
+  sync_with <%= @sync_with["syncer"] %> do |syncer|
+  <% @sync_with["settings"].each_pair do |k,v| %>
+    <% if v.is_a? String %>
+    <%= k %> = "<%= v %>"
+    <% elsif v.is_a? Symbol %>
+    <%= k %> = :<%= v %>
+    <% else %>
+    <%= k %> = <%= v %>
+    <% end %>
+  <% end %>
+    syncer.directories do |directory|
+    <% @options["add"].each do |v| %>
+      directory.add '<%= v %>'
+    <% end %>
+    <% if @options["exclude"] %>
+    <% @options["exclude"].each do |v| %>
+      directory.exclude '<%= v %>'
+    <% end %>
+    <% end %>
+    end
+  end
+<% end %>
 end

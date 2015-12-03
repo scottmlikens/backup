@@ -82,3 +82,21 @@ end
 execute "backup now archive_attribute_test" do
   command "#{node['languages']['ruby']['bin_dir']}/backup perform -t archive_attribute_test -c /opt/backup/config.rb"
 end
+
+# Need rsync package
+package 'rsync'
+backup_generate_model "sync_with_test" do
+  description "Test Syncers locally (with RSync::Local)"
+  backup_type "syncer"
+  action :backup
+  gem_bin_dir "/usr/local/bin"
+  options "add" => ["/opt/backup"],
+          "exclude" => ["log*"]
+  sync_with "syncer" => "RSync::Local",
+            "settings" => { "syncer.path" => "/tmp/sync",
+                            "syncer.mirror" => true }
+end
+
+execute "backup now sync_with_test" do
+  command "#{node['languages']['ruby']['bin_dir']}/backup perform -t sync_with_test -c /opt/backup/config.rb"
+end
