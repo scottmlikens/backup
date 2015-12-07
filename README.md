@@ -325,6 +325,25 @@ backup_generate_model "archive_attribute_test" do
 end
 ```
 
+### Syncers
+
+```ruby
+backup_generate_model "sync_my_docs" do
+  description  "Backup with RSync::Pull"
+  action :backup
+  backup_type "syncer"
+  gem_bin_dir "/opt/chef/embedded/bin"
+  options "add" => ["/home/username/documents", "/home/username/works"],
+          "exclude" => ["tmp"]
+  sync_with "syncer" => "RSync::Pull",
+            "settings" => { "syncer.path" => "/opt/backup/syncs",
+                            "syncer.mode" => :ssh,
+                            "syncer.additional_ssh_options" => "-i /home/username/.ssh/id_rsa",
+                            "syncer.host" => "192.168.0.42",
+                            "syncer.ssh_user" => "username" }
+end
+```
+
 > It is possible to load the settings in an *role* or an *data bag* or leave the settings in a recipe.
 
 License and Author
