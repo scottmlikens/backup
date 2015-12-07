@@ -12,6 +12,9 @@ platforms:
     run_list:
     - recipe[apt]
   - name: centos-6.6
+  - name: debian-8.1
+    run_list:
+    - recipe[apt]
 
 suites:
   - name: default
