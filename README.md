@@ -164,7 +164,13 @@ Actions:
     <td>Hash</td>
     <td>Specify what  <a href="https://github.com/meskyanichi/backup/wiki/Storages">storage</a> engines you wish enable.</td>
     <td></td>
-    </tr>
+  </tr>
+  <tr>
+    <td><tt>sync_with</tt></td>
+    <td>Hash</td>
+    <td>Enable and configure <a href="http://backup.github.io/backup/v4/syncers/">Syncers</a> for this model.</td>
+    <td></td>
+  </tr>
   <tr>
     <td><tt>hour</tt></td>
     <td>String</td>
