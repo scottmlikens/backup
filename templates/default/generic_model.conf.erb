@@ -16,7 +16,6 @@ Model.new(:<%= @name %>, '<%= @description %>') do
   #
   split_into_chunks_of <%= @split_into_chunks_of %>
 <% end %>
-
 <% if @notify_by %>
   notify_by <%= @notify_by["method"] %> do |<%= @notify_by["method"].downcase %>|
   <% @notify_by["settings"].each_pair do |k,v| %>
@@ -52,7 +51,10 @@ Model.new(:<%= @name %>, '<%= @description %>') do
   end
 <% end %>
 <% if @compress_with %>
-  compress_with <%= @compress_with %>
+##
+# Gzip [Compressor]
+#
+compress_with <%= @compress_with %>
 <% end %>
   <% if @backup_type == "database" %>
   database <%= @database_type %> do |db|

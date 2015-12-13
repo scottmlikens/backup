@@ -41,7 +41,7 @@ attribute :after_hook, :kind_of => String, :default => nil
 # encrypt_with.  Ruby Hash to specify how to encrypt your backups
 attribute :encrypt_with, :kind_of => Hash
 # Select the Compression Method (or disable it)
-attribute :compress_with, :kind_of => String, :default => "Gzip"
+attribute :compress_with
 # notify_by.  Ruby hash to specify how to notify your backups are completed
 attribute :notify_by, :kind_of => Hash
 # Enable and configure backup Syncers
