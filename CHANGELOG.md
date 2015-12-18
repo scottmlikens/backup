@@ -1,3 +1,9 @@
+## v0.3.0:
+
+- Add Syncer support from pull request #41
+- Disable Compression by default
+
+
 ## v0.2.6:
 
 - Modify `cron_path` so it has healthy defaults that should work.
