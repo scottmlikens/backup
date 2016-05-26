@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'chef'
+gem 'yard-chef'
 gem 'rake'
 gem 'rspec'
 gem 'foodcritic'
@@ -8,7 +10,6 @@ gem 'thor-foodcritic'
 gem 'vagrant-wrapper'
 
 group :integration do
-  gem 'test-kitchen', :git => "git://github.com/test-kitchen/test-kitchen.git"
-  gem 'kitchen-vagrant', :git => "git://github.com/opscode/kitchen-vagrant.git"
-  gem 'kitchen-lxc', :git => "https://github.com/portertech/kitchen-lxc.git", :tag => 'v0.0.1.beta2'
+  gem 'test-kitchen'
+  gem 'kitchen-vagrant'
 end
