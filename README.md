@@ -114,14 +114,12 @@ Actions:
     <td>String</td>
     <td>Path where backup and it's configuration files and models reside</td>
     <td><tt>/opt/backup</tt></td>
-    <td></td>
   </tr>
   <tr>
     <td><tt>gem_bin_dir</tt></td>
     <td>String</td>
     <td>Path where gem binaries, such as backup, reside (e.g. "/usr/local/bin" )</td>
     <td><tt>nil</tt></td>
-    <td></td>
   <tr>
     <td><tt>split_into_chunks_of</tt></td>
     <td>Fixnum</td>
@@ -132,6 +130,7 @@ Actions:
     <td><tt>description</tt></td>
     <td>String</td>
     <td>Description of the backup</td>
+    <td></td>
   </tr>
   <tr>
     <td><tt>backup_type</tt></td>
