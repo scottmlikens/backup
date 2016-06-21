@@ -160,7 +160,7 @@ Actions:
   <tr>
     <td><tt>store_with</tt></td>
     <td>Hash</td>
-    <td>Specify what  <a href="https://github.com/backup/backup/wiki/Storages">storage</a> engines you wish enable.</td>
+    <td>Specify what  <a href="http://backup.github.io/backup/v4/storages/">storage</a> engines you wish enable.</td>
     <td></td>
   </tr>
   <tr>
