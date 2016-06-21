@@ -238,7 +238,7 @@ Actions:
   <tr>
     <td><tt>notify_by</tt></td>
     <td>Hash</td>
-    <td>Hash object that configures [Notifiers](http://backup.github.io/backup/v4/notifiers/)</td>
+    <td>Hash object that configures <a href="http://backup.github.io/backup/v4/notifiers/">Notifiers</a></td>
     <td></td>
   </tr>
 </table>
