@@ -2,7 +2,7 @@ Backup Cookbook
 ===================
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/damm/backup?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-This cookbook automates deploying the [backup](https://github.com/meskyanichi/backup) gem and the configuration of any *models* you may want.  With a little work you can backup everything using this cookbook as the framework.
+This cookbook automates deploying the [backup](https://github.com/backup/backup) gem and the configuration of any *models* you may want.  With a little work you can backup everything using this cookbook as the framework.
 
 Requirements
 ============
@@ -136,7 +136,7 @@ Actions:
   <tr>
     <td><tt>backup_type</tt></td>
     <td>String</td>
-    <td>What kind of backup? <a href="http://meskyanichi.github.io/backup/v4/archives/">archive</a> or <a href="http://meskyanichi.github.io/backup/v4/databases/">database</a></td>
+    <td>What kind of backup? <a href="http://backup.github.io/backup/v4/archives/">archive</a> or <a href="http://backup.github.io/backup/v4/databases/">database</a></td>
     <td><tt>database</tt></td>
   </tr>
   <tr>
@@ -148,7 +148,7 @@ Actions:
   <tr>
     <td><tt>encrypt_with</tt></td>
     <td>Hash</td>
-    <td>Hash to specify how to <a href="http://meskyanichi.github.io/backup/v4/encryptors/">Encrypt</a> backups</td>
+    <td>Hash to specify how to <a href="http://backup.github.io/backup/v4/encryptors/">Encrypt</a> backups</td>
     <td></td>
   </tr>
   <tr>
@@ -160,7 +160,7 @@ Actions:
   <tr>
     <td><tt>store_with</tt></td>
     <td>Hash</td>
-    <td>Specify what  <a href="https://github.com/meskyanichi/backup/wiki/Storages">storage</a> engines you wish enable.</td>
+    <td>Specify what  <a href="https://github.com/backup/backup/wiki/Storages">storage</a> engines you wish enable.</td>
     <td></td>
   </tr>
   <tr>
@@ -238,7 +238,7 @@ Actions:
   <tr>
     <td><tt>notify_by</tt></td>
     <td>Hash</td>
-    <td>Hash object that configures [Notifiers](http://meskyanichi.github.io/backup/v4/notifiers/)</td>
+    <td>Hash object that configures [Notifiers](http://backup.github.io/backup/v4/notifiers/)</td>
     <td></td>
   </tr>
 </table>
