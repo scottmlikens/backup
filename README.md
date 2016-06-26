@@ -120,6 +120,7 @@ Actions:
     <td>String</td>
     <td>Path where gem binaries, such as backup, reside (e.g. "/usr/local/bin" )</td>
     <td><tt>nil</tt></td>
+  </tr>
   <tr>
     <td><tt>split_into_chunks_of</tt></td>
     <td>Fixnum</td>
