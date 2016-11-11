@@ -46,7 +46,7 @@ Model.new(:<%= @name %>, '<%= @description %>') do
 <% if @store_with %>
 
   <% if @storage_class %>
-  storage_class <%= @storage_class.to_symbol %>
+  storage_class <%= @storage_class %>
   <% end %>
   store_with <%= @store_with["engine"] %> do |<%= @store_with["engine"].downcase %>|
   <% @store_with["settings"].each_pair do |k,v| %>
