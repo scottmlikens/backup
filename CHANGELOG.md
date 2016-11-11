@@ -1,5 +1,13 @@
 ## Unreleased:
 
+## v0.3.3: 
+
+- Revert storage_class to a string so you can just use ":standard_ia" and it still is a symbol 
+
+## v0.3.2:
+
+- Attempt to ensure storage_class is a symbol failed.  .to_sym is not available
+
 ## v0.3.1:
 
 - Add storage_class
