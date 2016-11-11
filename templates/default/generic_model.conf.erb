@@ -44,6 +44,10 @@ Model.new(:<%= @name %>, '<%= @description %>') do
 <% end %>
 
 <% if @store_with %>
+
+  <% if @storage_class %>
+  storage_class <%= @storage_class.to_symbol %>
+  <% end %>
   store_with <%= @store_with["engine"] %> do |<%= @store_with["engine"].downcase %>|
   <% @store_with["settings"].each_pair do |k,v| %>
     <%= k %> = <%= ((v.is_a? String) ? "\"#{v}\"" : v) %>

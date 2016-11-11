@@ -241,6 +241,18 @@ Actions:
     <td>Hash object that configures <a href="http://backup.github.io/backup/v4/notifiers/">Notifiers</a></td>
     <td></td>
   </tr>
+  <tr>
+    <td><tt>sync_with</tt></td>
+    <td>Hash</td>
+    <td>Hash object that configures <a href="http://backup.github.io/backup/v4/syncers/">Syncers</a></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><tt>storage_class</tt></td>
+    <td>Symbol</td>
+    <td>Symbol that specifies the storage class with <A href="http://backup.github.io/backup/v4/storage-s3/">with S3.</a></td>
+    <td></td>
+  </tr>
 </table>
 
 Usage

@@ -1,5 +1,9 @@
 ## Unreleased:
 
+## v0.3.1:
+
+- Add storage_class
+
 ## v0.3.0:
 
 - Add Syncer support from pull request #41

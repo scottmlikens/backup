@@ -46,6 +46,8 @@ attribute :compress_with
 attribute :notify_by, :kind_of => Hash
 # Enable and configure backup Syncers
 attribute :sync_with, :kind_of => Hash
+# Specify the storage class if using S3
+attribute :storage_class, :kind_of => Symbol
 
 def initialize(*args)
   super

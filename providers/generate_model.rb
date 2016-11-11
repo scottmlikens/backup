@@ -27,7 +27,8 @@ action :backup do
                 :notify_by => new_resource.notify_by,
                 :before_hook => new_resource.before_hook,
                 :after_hook => new_resource.after_hook,
-                :sync_with => new_resource.sync_with
+                :sync_with => new_resource.sync_with,
+                :storage_class => new_resource.storage_class
               })
   end
   cron_d new_resource.name do
