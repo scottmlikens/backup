@@ -1,6 +1,10 @@
 ## Unreleased:
 
-## v0.3.3: 
+## v0.3.4:
+
+- storage_class isn't in the right space.  Make it work
+
+## v0.3.3:
 
 - Revert storage_class to a string so you can just use ":standard_ia" and it still is a symbol 
 
