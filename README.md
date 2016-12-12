@@ -184,7 +184,7 @@ Actions:
   <tr>
     <td><tt>day</tt></td>
     <td>String</td>
-    <td>Day of the week to run the backup</td>
+    <td>Day of the month to run the backup</td>
     <td><tt>*</tt></td>
   </tr>
   <tr>
