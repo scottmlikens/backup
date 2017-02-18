@@ -22,13 +22,15 @@ suites:
     - recipe[build-essential]
     - recipe[minitest-handler]
     - recipe[backup_test::default]
-  - name: chef10
+  - name: chef13
     run_list:
     - recipe[build-essential]
     - recipe[minitest-handler]
     - recipe[backup_test::default]
     provisioner:
-      require_chef_omnibus: 10.30.2
+      client_rb:
+        treat_deprecation_warnings_as_errors: true
+        resource_cloning: false
   - name: disable
     run_list:
     - recipe[build-essential]

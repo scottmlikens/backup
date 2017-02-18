@@ -34,7 +34,7 @@ backup_generate_model "archive" do
   action :backup
 end
 
-execute "backup now" do
+execute "perform backup test on archive" do
   command "#{node['languages']['ruby']['bin_dir']}/backup perform -t archive -c /opt/backup/config.rb"
 end
 
@@ -47,7 +47,7 @@ backup_generate_model "archive_encrypted" do
   action :backup
 end
 
-execute "backup now" do
+execute "perform backup test on archive_encrypted" do
   command "#{node['languages']['ruby']['bin_dir']}/backup perform -t archive_encrypted -c /opt/backup/config.rb"
 end
   

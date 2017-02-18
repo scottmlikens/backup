@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-
 gem 'chef'
 gem 'yard-chef'
 gem 'rake'
