@@ -21,24 +21,12 @@ suites:
   - name: default
     run_list:
     - recipe[build-essential]
-    - recipe[minitest-handler]
     - recipe[backup_test::default]
-  - name: chef13
-    run_list:
-    - recipe[build-essential]
-    - recipe[minitest-handler]
-    - recipe[backup_test::default]
-    provisioner:
-      client_rb:
-        treat_deprecation_warnings_as_errors: true
-        resource_cloning: false
   - name: disable
     run_list:
     - recipe[build-essential]
-    - recipe[minitest-handler]
     - recipe[backup_test::disable]
   - name: remove
     run_list:
     - recipe[build-essential]
-    - recipe[minitest-handler]
     - recipe[backup_test::remove]
