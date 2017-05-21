@@ -297,7 +297,7 @@ backup_generate_model "pg" do
   database_type "PostgreSQL"
   split_into_chunks_of 2048
   store_with({"engine" => "S3", "settings" => { "s3.access_key_id" => "sample", "s3.secret_access_key" => "sample", "s3.region" => "us-east-1", "s3.bucket" => "sample", "s3.path" => "/", "s3.keep" => 10 } } )
-  options({"db.name" => "\"postgres\"", "db.username" => "\"postgres\"", "db.password" => "\"somepassword\"", "db.host" => "\"localhost\"" })
+  options({"db.name" => "\"postgres\"", "db.username" => "\"postgres\"", "db.password" => "\"somepassword\"", "db.host" => "\"localhost\"", "db.additional_options" => "[\" --format custom \"]"})
   mailto "sample@example.com"
   action :backup
 end
