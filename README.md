@@ -1,6 +1,6 @@
 Backup Cookbook
 ===================
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/damm/backup?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/damm/backup.svg?branch=master)](https://travis-ci.org/damm/backup)
 
 This cookbook automates deploying the [backup](https://github.com/backup/backup) gem and the configuration of any *models* you may want.  With a little work you can backup everything using this cookbook as the framework.
 
@@ -8,7 +8,8 @@ Requirements
 ============
 
 #### packages
-- `ruby` - ruby is required for the backup gem to be installed.  This can be provided either via chef or via other means.
+- `ruby` - ruby is required for the backup gem to be installed.
+> Note Currently Chef13 ships Ruby 2.4 in it's Omnnibus which is not compatable with the Backup gem currently
 - `libxml2-dev`
 - `libxslt1-dev`
 
