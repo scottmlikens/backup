@@ -155,7 +155,7 @@ Actions:
   <tr>
     <td><tt>compress_with</tt></td>
     <td>String</td>
-    <td>Specify the Compress Methodd (or disable it)</td>
+    <td>Specify the Compress Method (or disable it)</td>
     <td>Gzip</td>
   </tr>
   <tr>
