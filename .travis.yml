@@ -9,7 +9,7 @@ env:
   matrix:
     - INSTANCE=default-ubuntu-1604
 
-bundler_args: "--binstubs-$PWD --jobs 3 --retry 3"
+bundler_args: "--binstubs=$PWD/bin --jobs 3 --retry 3"
 
 services:
   - docker
