@@ -5,7 +5,7 @@ attribute :options, :kind_of => Hash
 # Path where backup and it's configuration files and models reside
 attribute :base_dir, :kind_of => String, :default => "/opt/backup"
 # Path where gem binaries, such as backup, reside
-attribute :gem_bin_dir, :kind_of => String, :default => nil
+attribute :gem_bin_dir, :kind_of => String, :default => "/usr/local/bin"
 # Split the backup archive into multiple smaller files
 attribute :split_into_chunks_of, :kind_of => Fixnum, :default => nil
 # Description of the backup
