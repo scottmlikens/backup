@@ -1,5 +1,13 @@
 ## Unreleased:
 
+## v0.4.0:
+
+- Update README to clarify that we need Ruby 2.3 or younger at the moment.  This won't work with the Omnibus install of Chef currently.
+- Hardcode `gem_bin_dir` to `/usr/local/bin` 
+- Remove unneccesary code from `providers/generate_mode.rb` [Pull Request #54](https://github.com/damm/backup/pull/54)
+- Update Testing framework
+- Add basic tests for inspec
+
 ## v0.3.4:
 
 - storage_class isn't in the right space.  Make it work
