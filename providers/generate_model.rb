@@ -32,11 +32,11 @@ action :backup do
               })
   end
   cron_d new_resource.name do
-    hour new_resource.hour || "1"
-    minute new_resource.minute || "*"
-    day new_resource.day || "*"
-    month new_resource.month || "*"
-    weekday new_resource.weekday || "*"
+    hour new_resource.hour
+    minute new_resource.minute
+    day new_resource.day
+    month new_resource.month
+    weekday new_resource.weekday
     if new_resource.mailto
       mailto new_resource.mailto
     else
