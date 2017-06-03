@@ -41,9 +41,6 @@ backup_generate_model "no_split_test" do
   store_with({"engine" => "Local", "settings" => { "local.keep" => 5, "local.path" => "/tmp" } })
   options({"add" => ["/home/","/etc/"], "exclude" => ["/etc/init"], "tar_options" => "-p"})
   mailto "sample@example.com"
-  action :backup
+  action [:backup,:remove]
 end
 
-backup_generate_config "bob" do
-  action :remove
-end
