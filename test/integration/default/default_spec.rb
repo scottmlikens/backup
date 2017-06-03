@@ -31,7 +31,7 @@ control 'backup should be installed and configured' do
     it { should be_file }
   end
   describe file('/etc/cron.d/no_split_test') do
-    it { should be_directory }
+    it { should be_file }
   end
     # this helps prove our tests tried to dump data
   directory file('/tmp/archive') do
@@ -50,8 +50,8 @@ end
 control 'it should have a models configured accordingly' do
   describe file('/opt/backup/models/no_split_test.rb') do
     it { should be_file }
-    its(:content) { should match /notify_by/ }
-    its(:content) { should match /split_into_chunks_of/ }
+    its(:content) { should_not match /notify_by/ }
+    its(:content) { should_not match /split_into_chunks_of/ }
   end
   describe file('/opt/backup/models/archive_encrypted.rb') do
     it { should be_file }
