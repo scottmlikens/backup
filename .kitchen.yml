@@ -8,12 +8,11 @@ provisioner:
   name: chef_solo
   deprecations_as_errors: true
 
+verifier:
+  name: inspec
+
 platforms:
   - name: ubuntu-16.04
-    run_list:
-    - recipe[apt]
-  - name: centos-6.6
-  - name: debian-8.1
     run_list:
     - recipe[apt]
 
@@ -21,24 +20,12 @@ suites:
   - name: default
     run_list:
     - recipe[build-essential]
-    - recipe[minitest-handler]
     - recipe[backup_test::default]
-  - name: chef13
-    run_list:
-    - recipe[build-essential]
-    - recipe[minitest-handler]
-    - recipe[backup_test::default]
-    provisioner:
-      client_rb:
-        treat_deprecation_warnings_as_errors: true
-        resource_cloning: false
   - name: disable
     run_list:
     - recipe[build-essential]
-    - recipe[minitest-handler]
     - recipe[backup_test::disable]
   - name: remove
     run_list:
     - recipe[build-essential]
-    - recipe[minitest-handler]
     - recipe[backup_test::remove]

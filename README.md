@@ -1,6 +1,6 @@
 Backup Cookbook
 ===================
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/damm/backup?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Build Status](https://travis-ci.org/damm/backup.svg?branch=master)](https://travis-ci.org/damm/backup)
 
 This cookbook automates deploying the [backup](https://github.com/backup/backup) gem and the configuration of any *models* you may want.  With a little work you can backup everything using this cookbook as the framework.
 
@@ -8,7 +8,8 @@ Requirements
 ============
 
 #### packages
-- `ruby` - ruby is required for the backup gem to be installed.  This can be provided either via chef or via other means.
+- `ruby` - ruby is required for the backup gem to be installed.
+> Note Currently Chef13 ships Ruby 2.4 in it's Omnnibus which is not compatable with the Backup gem currently
 - `libxml2-dev`
 - `libxslt1-dev`
 
@@ -39,221 +40,46 @@ Actions:
 * `remove` - **removes the base directory for the backup gem** and everything underneath it.
 
 ### backup::install
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>version</tt></td>
-    <td>String</td>
-    <td>Version of the backup gem to install</td>
-    <td></td>
-  </tr>
-</table>
+| Attribute  | Type  | Description  | Default  | Required |
+|---|---|---|---|---|
+| version | String | Version of the backup gem to install | 4.4.0 | No |
 
 ### backup::generate_config
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>base_dir</tt></td>
-    <td>String</td>
-    <td>Path where backup and it's configuration files and models reside</td>
-    <td><tt>/opt/backup</tt></td>
-  </tr>
-  <tr>
-    <td><tt>cookbook</tt></td>
-    <td>String</td>
-    <td>Cookbook that has the erb template specified in the <code>source</code> to generate config.rb</td>
-    <td><tt>backup</tt></td>
-  </tr>
-  <tr>
-    <td><tt>source</tt></td>
-    <td>String</td>
-    <td>Filename of the erb template that generates <code>config.rb</code></td>
-    <td><tt>config.rb.erb</tt></td>
-  </tr>
-  <tr>
-    <td><tt>tmp_path</tt></td>
-    <td>String</td>
-    <td>Directory to store temporary files during backup</td>
-    <td><tt>/tmp</tt></td>
-  </tr>
-  <tr>
-    <td><tt>data_path</tt></td>
-    <td>String</td>
-    <td>Directory to store Storage Cycler YAML files</td>
-    <td><tt>/opt/backup/.data</tt></td>
-  </tr>
-</table>
+| Attribute  | Type  | Description  | Default  | Required |
+|---|---|---|---|---|
+| base_dir | String | Path where backup adn it's configuration files and models resize | /opt/backup | No |
+| cookbook | String | Cookbook that has the erb template specified in the <code>source</code> to generate config.rb | backup | No |
+| source | String | Filename of the erb template that generates <code>config.rb</code> | config.rb.erb | No |
+| tmp_path | String | Directory to store temporary files during backup | /tmp | No |
+| data_path | String | Directory to store Storage Cycler Yaml Files | /opt/backup/.data | No |
 
 ### backup::generate_model
-
-<table>
-  <tr>
-    <th>Attribute</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>options</tt></td>
-    <td>Hash</td>
-    <td>Specifies the options used in the backup model</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>base_dir</tt></td>
-    <td>String</td>
-    <td>Path where backup and it's configuration files and models reside</td>
-    <td><tt>/opt/backup</tt></td>
-  </tr>
-  <tr>
-    <td><tt>gem_bin_dir</tt></td>
-    <td>String</td>
-    <td>Path where gem binaries, such as backup, reside (e.g. "/usr/local/bin" )</td>
-    <td><tt>nil</tt></td>
-  </tr>
-  <tr>
-    <td><tt>split_into_chunks_of</tt></td>
-    <td>Fixnum</td>
-    <td>Split the backup archive into multiple smaller files</td>
-    <td><tt>nil</tt></td>
-  </tr>
-  <tr>
-    <td><tt>description</tt></td>
-    <td>String</td>
-    <td>Description of the backup</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>backup_type</tt></td>
-    <td>String</td>
-    <td>What kind of backup? <a href="http://backup.github.io/backup/v4/archives/">archive</a> or <a href="http://backup.github.io/backup/v4/databases/">database</a></td>
-    <td><tt>database</tt></td>
-  </tr>
-  <tr>
-    <td><tt>database_type</tt></td>
-    <td>String</td>
-    <td>Type of Database to backup</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>encrypt_with</tt></td>
-    <td>Hash</td>
-    <td>Hash to specify how to <a href="http://backup.github.io/backup/v4/encryptors/">Encrypt</a> backups</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>compress_with</tt></td>
-    <td>String</td>
-    <td>Specify the Compress Methodd (or disable it)</td>
-    <td>Gzip</td>
-  </tr>
-  <tr>
-    <td><tt>store_with</tt></td>
-    <td>Hash</td>
-    <td>Specify what  <a href="http://backup.github.io/backup/v4/storages/">storage</a> engines you wish enable.</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>sync_with</tt></td>
-    <td>Hash</td>
-    <td>Enable and configure <a href="http://backup.github.io/backup/v4/syncers/">Syncers</a> for this model.</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>hour</tt></td>
-    <td>String</td>
-    <td>What hour to run the backup</td>
-    <td><tt>1</tt></td>
-  </tr>
-  <tr>
-    <td><tt>minute</tt></td>
-    <td>String</td>
-    <td>How many minutes past the hour to run the backup</td>
-    <td><tt>0</tt></td>
-  </tr>
-  <tr>
-    <td><tt>day</tt></td>
-    <td>String</td>
-    <td>Day of the month to run the backup</td>
-    <td><tt>*</tt></td>
-  </tr>
-  <tr>
-    <td><tt>month</tt>
-    <td>String</td>
-    <td>Day of the month to run backup</td>
-    <td><tt>*</tt></td>
-  </tr>
-  <tr>
-    <td><tt>weekday</tt></td>
-    <td>String</td>
-    <td>Day of the Week to run backup</td>
-    <td><tt>*</tt></td>
-  </tr>
-  <tr>
-    <td><tt>mailto</tt></td>
-    <td>String</td>
-    <td>sets the MAILTO variable in the crontab to specify who should get the output of the crontab run</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>tmp_path</tt></td>
-    <td>String</td>
-    <td>sets the tmp path for the backup</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>cron_path</tt></td>
-    <td>String</td>
-    <td>sets the PATH variable in the crontab to specify who should get the output of the crontab run</td>
-    <td>/usr/bin:/bin:/usr/local/bin:/opt/chef/embedded/bin</td>
-  </tr>
-  <tr>
-    <td><tt>cron_log</tt></td>
-    <td>String</td>
-    <td>Log file for redirecting the cron job output</td>
-    <td></td>
-  </tr>
-   <tr>
-    <td><tt>before_hook</tt></td>
-    <td>String</td>
-    <td>Before hook runs ruby code just after 'Backup' logs that the backup has started, before any procedures are performed</td>
-    <td></td>
-  </tr>
-   <tr>
-    <td><tt>after_hook</tt></td>
-    <td>String</td>
-    <td>After hook runs ruby code just before any Notifiers and is guaranteed to run whether or not the backup process was successful or not</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>notify_by</tt></td>
-    <td>Hash</td>
-    <td>Hash object that configures <a href="http://backup.github.io/backup/v4/notifiers/">Notifiers</a></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>sync_with</tt></td>
-    <td>Hash</td>
-    <td>Hash object that configures <a href="http://backup.github.io/backup/v4/syncers/">Syncers</a></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td><tt>storage_class</tt></td>
-    <td>String</td>
-    <td>Symbol that specifies the storage class with <A href="http://backup.github.io/backup/v4/storage-s3/">with S3.</a></td>
-    <td></td>
-  </tr>
-</table>
+| Attribute  | Type  | Description  | Default  | Required |
+|---|---|---|---|---|
+| options | Hash | Specifies the options used in the backup model | `{}` | Yes |
+| base_dir | String | Path where backup and it's configuration files and models reside | /opt/backup | No |
+| gem_bin_dir | String | Path where gem binaries end up.  (e.g. /usr/local/bin) | | No |
+| split_into_chunks_of | Fixnum | Split the backup archives into multiple smaller files | | No |
+| description | String | Description of the backup | | No |
+| backup_type | String | What kind of backup? [archive](http://backup.github.io/backup/v4/archives/) or [database](http://backup.github.io/backup/v4/databases) | database | Yes |
+| database_type | String | Type of Database to backup | | Yes |
+| encrypt_with | Hash | Hash to specify how to [Encrypt](http://backup.github.io/backup/v4/encryptors/) | | No |
+| compress_with | String | Specify the Comrpession Method (or disable it) | Gzip | |
+| store_with | Hash | Specify what [storage](http://backup.github.io/backup/v4/storages/) engines you wish use | `{}` | Yes |
+| sync_with | Hash | Enable and configure [syncers](http://backup.github.io/backup/v4/syncers/) for this model.</td> | `{}` | No |
+| hour | String | What hour to run the backup | 1 | No |
+| minute | String | How many minutes past the hour to run the backup | 0 | No |
+| month | String | Day of the month to run backup | * | No |
+| weekday | String | Day of the week to run backup | * | No |
+| mailto | String | sets the MAILTO variable in the crontab to specify who should get the output of the crontab run | | No |
+| tmp_path | String | sets the tmp path for the backup | | No |
+| cron_path | String | sets the PATH variable in the crontab | | No |
+| cron_log | String | Log file for redirecting the job output | | No |
+| before_hook | String | Before hook runs ruby code just after _Backup_ logs that the backup has started, before any procedures are performed | | No|
+| after_hook | String | After hook runs ruby code just before any Notifiers and is guranteed to run wether or not the backup process was successful or not | | No |
+| notify_by | Hash | Hash object that configures [Notifiers](http://backup.github.io/backup/v4/notifiers/) | | No |
+| sync_with | Hash | Hash object that configures [Syncers](http://backup.github.io/backup/v4/syncers) | | No |
+| storage_class | String | Symbol that specifies the [storage class](http://backup.github.io/backup/v4/storage-s3/) with with S3 | | No |
 
 Usage
 -----

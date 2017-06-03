@@ -32,11 +32,11 @@ action :backup do
               })
   end
   cron_d new_resource.name do
-    hour new_resource.hour || "1"
-    minute new_resource.minute || "*"
-    day new_resource.day || "*"
-    month new_resource.month || "*"
-    weekday new_resource.weekday || "*"
+    hour new_resource.hour
+    minute new_resource.minute
+    day new_resource.day
+    month new_resource.month
+    weekday new_resource.weekday
     if new_resource.mailto
       mailto new_resource.mailto
     else
@@ -51,9 +51,9 @@ action :backup do
     end
     command cmd + ( new_resource.tmp_path ? " --tmp-path #{new_resource.tmp_path}" : "" ) +  ( new_resource.cron_log ? " >> #{new_resource.cron_log} 2>&1" : "" )
     if new_resource.cron_path
-      path "#{new_resource.cron_path}:#{node['languages']['ruby']['bin_dir']}"
+      path "#{new_resource.cron_path}:#{node['languages']['ruby']['bin_dir']}:#{new_resource.gem_bin_dir}"
     else
-      path node['languages']['ruby']['bin_dir']
+      path "#{node['languages']['ruby']['bin_dir']}:#{new_resource.gem_bin_dir}"
     end
     action :create
   end
