@@ -89,6 +89,7 @@ This cookbook is intended to be a framework to help backup your systems.  Some e
 ### MongoDB
 
 ```ruby
+package "ruby-full"
 backup_install node.name
 backup_generate_config node.name
 gem_package "fog" do
@@ -112,6 +113,7 @@ end
 ### PostgreSQL
 
 ```ruby
+package "ruby-full"
 backup_install node.name
 backup_generate_config node.name
 gem_package "fog" do
@@ -132,6 +134,7 @@ end
 ### Archiving files to S3
 
 ```ruby
+package "ruby-full"
 backup_install node.name
 backup_generate_config node.name
 gem_package "fog" do
@@ -151,6 +154,7 @@ end
 ### Notifications
 
 ```ruby
+package "ruby-full"
 backup_generate_model "archive_attribute_test" do
   description "backup of /etc using additional attributes"
   backup_type "archive"
@@ -170,6 +174,7 @@ end
 ### Syncers
 
 ```ruby
+package "ruby-full"
 backup_generate_model "sync_my_docs" do
   description  "Backup with RSync::Pull"
   action :backup
@@ -193,7 +198,7 @@ License and Author
 
 Author:: Scott Likens (<scott@likens.us>)
 
-Copyright 2014, Scott M. Likens
+Copyright 2014-2017, Scott M. Likens
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
