@@ -49,7 +49,7 @@ control 'backup should be installed and configured' do
 end
 control 'it should have a models configured accordingly' do
   describe file('/opt/backup/models/no_split_test.rb') do
-    it { should be_file )
+    it { should be_file }
     its(:content) { should match /notify_by/ }
     its(:content) { should match /split_into_chunks_of/ }
   end
