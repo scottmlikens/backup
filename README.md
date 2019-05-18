@@ -198,7 +198,7 @@ License and Author
 
 Author:: Scott Likens (<scott@likens.us>)
 
-Copyright 2014-2017, Scott M. Likens
+Copyright 2014-2019, Scott M. Likens
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
