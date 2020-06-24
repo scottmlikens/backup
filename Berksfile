@@ -1,4 +1,6 @@
-site :opscode
+# -*- mode: ruby -*-
+source "https://supermarket.getchef.com"
+
 
 metadata
 

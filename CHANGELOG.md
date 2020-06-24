@@ -1,5 +1,8 @@
 ## Unreleased:
 
+## v0.4.1:
+  add `gem_binary` to the install resource so it does not get installed into cinc/chef
+
 ## v0.4.0:
 
 - Update README to clarify that we need Ruby 2.3 or younger at the moment.  This won't work with the Omnibus install of Chef currently.

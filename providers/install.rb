@@ -29,7 +29,8 @@ action :install do
   package lzmadev
   gem_package "backup" do
     action :install
-    version new_resource.version unless new_resource.version.empty?
+    gem_binary new_resource.gem_binary
+    version new_resource.version
   end
 end
 
