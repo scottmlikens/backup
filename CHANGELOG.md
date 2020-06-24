@@ -1,5 +1,8 @@
 ## Unreleased:
 
+## v0.4.2:
+  add `encryption` knob to configuration generator so `:aes256` actually works
+  
 ## v0.4.1:
   add `gem_binary` to the install resource so it does not get installed into cinc/chef
 

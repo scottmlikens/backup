@@ -48,6 +48,8 @@ attribute :notify_by, :kind_of => Hash
 attribute :sync_with, :kind_of => Hash
 # Specify the storage class if using S3
 attribute :storage_class
+# Specify if S3 should encrypt the file on the server side
+attribute :encryption
 
 def initialize(*args)
   super
